@@ -15,6 +15,6 @@ router.get('/', articleController.list);
 router.get('/:id', checkIDParam, articleController.show);
 router.post('/', articleController.create);
 router.put('/:id', checkIDParam, articleController.update);
-router.delete('/:id', articleController.remove);
+router.delete('/:id', checkIDParam, articleController.remove);
 
 module.exports = router;

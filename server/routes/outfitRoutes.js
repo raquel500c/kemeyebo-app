@@ -1,30 +1,20 @@
-var express = require('express');
-var router = express.Router();
-var outfitController = require('../controllers/outfitController.js');
+const express = require('express');
+const router = express.Router();
+const outfitController = require('../controllers/outfitController.js');
+const mongoose = require('mongoose');
 
-/*
- * GET
- */
+const checkIDParam = (req,res,next) =>{
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: 'Specified id is not valid' });
+    return;
+  }
+  next();
+};
+
 router.get('/', outfitController.list);
-
-/*
- * GET
- */
-router.get('/:id', outfitController.show);
-
-/*
- * POST
- */
+router.get('/:id', checkIDParam, outfitController.show);
 router.post('/', outfitController.create);
-
-/*
- * PUT
- */
-router.put('/:id', outfitController.update);
-
-/*
- * DELETE
- */
-router.delete('/:id', outfitController.remove);
+router.put('/:id', checkIDParam, outfitController.update);
+router.delete('/:id', checkIDParam, outfitController.remove);
 
 module.exports = router;
