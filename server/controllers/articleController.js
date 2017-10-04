@@ -1,4 +1,4 @@
-var articleModel = require('../models/articleModel.js');
+const articleModel = require('../models/articleModel.js');
 
 /**
  * articleController.js
@@ -11,22 +11,27 @@ module.exports = {
      * articleController.list()
      */
     list: function (req, res) {
-        articleModel.find(function (err, articles) {
-            if (err) {
-                return res.status(500).json({
-                    message: 'Error when getting article.',
-                    error: err
-                });
-            }
-            return res.json(articles);
-        });
+      articleModel.find().populate('owner')
+      .then(articles => {
+         return res.json(articles);
+      })
+      .catch(e => res.status(500).json({error:e.message}));
+        // articleModel.find(function (err, articles) {
+        //     if (err) {
+        //         return res.status(500).json({
+        //             message: 'Error when getting article.',
+        //             error: err
+        //         });
+        //     }
+        //     return res.json(articles);
+        // });
     },
 
     /**
      * articleController.show()
      */
     show: function (req, res) {
-        var id = req.params.id;
+        const id = req.params.id;
         articleModel.findOne({_id: id}, function (err, article) {
             if (err) {
                 return res.status(500).json({
@@ -47,8 +52,14 @@ module.exports = {
      * articleController.create()
      */
     create: function (req, res) {
-        var article = new articleModel({
-			user_id : req.body.user_id
+        const article = new articleModel({
+    			owner : req.body.owner,
+          articleName: req.body.articleName,
+          weater: req.body.weater,
+          color: req.body.color,
+          style: req.body.style,
+          category: req.body.category,
+          image: req.body.image
 
         });
 
@@ -67,7 +78,7 @@ module.exports = {
      * articleController.update()
      */
     update: function (req, res) {
-        var id = req.params.id;
+        const id = req.params.id;
         articleModel.findOne({_id: id}, function (err, article) {
             if (err) {
                 return res.status(500).json({
@@ -100,7 +111,7 @@ module.exports = {
      * articleController.remove()
      */
     remove: function (req, res) {
-        var id = req.params.id;
+        const id = req.params.id;
         articleModel.findByIdAndRemove(id, function (err, article) {
             if (err) {
                 return res.status(500).json({

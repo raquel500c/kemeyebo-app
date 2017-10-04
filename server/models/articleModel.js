@@ -1,7 +1,8 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var articleSchema = new Schema({
+const articleSchema = new Schema({
+  owner: {type: Schema.Types.ObjectId, ref: 'User' },
   articleName:{type: String},
   weater: {type: String},
   color:{type: String},
@@ -11,13 +12,7 @@ var articleSchema = new Schema({
     enum: ['top', 'bottom', 'shoes', 'accesory', 'underwear', 'other'],
     default: 'other'
   },
-  image: {
-    type: String,
-    default: ''
-  },
-  // Owner: {type: Schema.Types.ObjectId, ref: 'User' },
-  // setsList: [ { type: Schema.Types.ObjectId,  ref: 'setModel' } ],
-  // bagList: [ { type: Schema.Types.ObjectId,  ref: 'bagModel' } ],
+  image: { type: String, default: ''}
 }, {
   timestamps: {
     createdAt: 'created_at',
