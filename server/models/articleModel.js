@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const articleSchema = new Schema({
   owner: {type: Schema.Types.ObjectId, ref: 'User' },
   articleName:{type: String},
-  weater: {type: String},
+  weather: {type: String},
   color:{type: String},
 	style: {type: String},
   category: {

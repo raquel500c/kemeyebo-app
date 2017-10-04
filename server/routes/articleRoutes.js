@@ -1,30 +1,20 @@
-var express = require('express');
-var router = express.Router();
-var articleController = require('../controllers/articleController.js');
+const express = require('express');
+const router = express.Router();
+const articleController = require('../controllers/articleController.js');
+const mongoose = require('mongoose');
 
-/*
- * GET
- */
+const checkIDParam = (req,res,next) =>{
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: 'Specified id is not valid' });
+    return;
+  }
+  next();
+};
+
 router.get('/', articleController.list);
-
-/*
- * GET
- */
-router.get('/:id', articleController.show);
-
-/*
- * POST
- */
+router.get('/:id', checkIDParam, articleController.show);
 router.post('/', articleController.create);
-
-/*
- * PUT
- */
-router.put('/:id', articleController.update);
-
-/*
- * DELETE
- */
+router.put('/:id', checkIDParam, articleController.update);
 router.delete('/:id', articleController.remove);
 
 module.exports = router;
