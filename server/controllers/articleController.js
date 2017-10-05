@@ -23,7 +23,7 @@ module.exports = {
       owner, articleName, weather,color,style,category,
       image: req.body.image || ''
     });
-    
+
     article.save()
       .then( a => res.status(200).json({message: 'New Article created!', article: a}))
       .catch( e => res.status(500).json({error:e.message}));

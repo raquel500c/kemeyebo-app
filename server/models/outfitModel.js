@@ -1,11 +1,16 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
+
 const outfitSchema = new Schema({
 	owner : { type: Schema.Types.ObjectId, ref: 'User'},
-	articlesList : [ { type: Schema.Types.ObjectId,  ref: 'articleModel' } ],
+	articlesList : [ { type: Schema.Types.ObjectId,  ref: 'article' } ],
 	outfitName : String,
-	weather: String,
+	weather: {
+    type: String,
+    enum: ['spring', 'summer', 'fall','winter',''],
+    default: ''
+  },
   color: String,
 	style: String
 }, {
