@@ -5,7 +5,11 @@ const User = require('./User')
 const articleSchema = new Schema({
   owner: {type: Schema.Types.ObjectId, ref: 'User' },
   articleName: String,
-  weather: {type: String},
+  weather: {
+    type: String,
+    enum: ['spring', 'summer', 'fall','winter',''],
+    default: ''
+  },
   color:{type: String},
 	style: {type: String},
   category: {

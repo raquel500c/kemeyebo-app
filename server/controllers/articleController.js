@@ -10,10 +10,7 @@ module.exports = {
 
   show: (req, res) => {
     articleModel.findById(req.params.id)
-      .then( article => {
-        if (!article) return res.status(404).json({ message: 'No such article'});
-        return res.status(200).json(article);
-      })
+      .then( article => res.status(200).json(article))
       .catch(e => res.status(500).json({error:e.message}));
   },
 
