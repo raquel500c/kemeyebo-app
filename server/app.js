@@ -12,6 +12,7 @@ const debug = require('debug')("angularauth:"+path.basename(__filename).split('.
 const authRoutes = require('./routes/auth');
 const articleRoutes = require('./routes/articleRoutes');
 const outfitRoutes = require('./routes/outfitRoutes');
+const bagRoutes = require('./routes/bagRoutes');
 
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -59,6 +60,7 @@ app.use(passport.session());
 app.use('/auth', authRoutes);
 app.use('/articles', articleRoutes);
 app.use('/outfits', outfitRoutes);
+app.use('/bags', bagRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
