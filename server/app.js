@@ -21,12 +21,13 @@ const app = express();
 
 require('./config/database');
 
-var whitelist = [
+const whitelist = [
     'http://localhost:4200',
 ];
-var corsOptions = {
+
+const corsOptions = {
     origin: function(origin, callback){
-        var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+        const originIsWhitelisted = whitelist.indexOf(origin) !== -1;
         callback(null, originIsWhitelisted);
     },
     credentials: true
@@ -64,7 +65,7 @@ app.use('/bags', bagRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
