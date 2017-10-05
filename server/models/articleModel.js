@@ -4,20 +4,30 @@ const User = require('./User')
 
 const articleSchema = new Schema({
   owner: {type: Schema.Types.ObjectId, ref: 'User' },
-  articleName: String,
-  weather: {
+  image: { type: String, default: ''},
+  name: String,
+  season: {
     type: String,
-    enum: ['spring', 'summer', 'fall','winter',''],
+    enum: ['primavera', 'verano', 'otoño','invierno','todas'],
     default: ''
   },
-  color:{type: String},
-	style: {type: String},
+  colorsRange:{
+    type: String,
+    enum: ['blanco', 'crema', 'gris','negro','azul','rojo','amarillo',
+  'verde','morado','naranja','rosa','plateado','dorado', 'marrón',''],
+    default: ''
+  },
+	style: {
+    type: String,
+    enum: ['informal', 'casual', 'deporte', 'fiesta','formal','formal-playa','etiqueta',''],
+    default: ''
+  },
   category: {
     type: String,
-    enum: ['top', 'bottom', 'shoes', 'accesory', 'underwear', 'other'],
-    default: 'other'
+    enum: ['parte de arriba', 'parte de abajo', 'cuerpo entero', 'calzado', 'accesorio', 'ropa interior', 'otra'],
+    default: 'otra'
   },
-  image: { type: String, default: ''}
+  notes: String,
 }, {
   timestamps: {
     createdAt: 'created_at',

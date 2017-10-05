@@ -16,8 +16,8 @@ module.exports = {
   },
 
   create: (req, res) => {
-    const {owner, articlesList, outfitName, weather, color, style} = req.body;
-    const outfit = new outfitModel({owner, articlesList, outfitName, weather, color, style});
+    const {owner, articlesList, name, season, colorsRange, style, notes} = req.body;
+    const outfit = new outfitModel({owner, articlesList, name, season, colorsRange, style, notes});
 
     outfit.save()
       .then( o => res.status(200).json({message: 'New Outfit created!', outfit:o}))
@@ -25,8 +25,8 @@ module.exports = {
   },
 
   update: (req, res) => {
-    const {owner, articlesList, outfitName, weather, color, style} = req.body;
-    const updates = {owner, articlesList, outfitName, weather, color, style};
+    const {owner, articlesList, name, season, colorsRange, style, notes} = req.body;
+    const updates = {owner, articlesList, name, season, colorsRange, style, notes};
 
     outfitModel.findByIdAndUpdate(req.params.id, updates, {new:true})
       .then(outfit => res.status(200).json(outfit))

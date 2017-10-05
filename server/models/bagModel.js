@@ -14,9 +14,10 @@ var bagSchema = new Schema({
 	 	type: Schema.Types.ObjectId,
 	 	ref: 'outfit'
 	},
-	'bagName' : String,
-	'date' : Date,
-	'numDays' : Number
+	'travelName' : String,
+	'travelDate' : Date,
+	'travelDays' : Number,
+	'notes': String
 });
 
 module.exports = mongoose.model('bag', bagSchema);

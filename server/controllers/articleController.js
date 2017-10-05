@@ -15,9 +15,9 @@ module.exports = {
   },
 
   create: (req, res) => {
-    const {owner, articleName, weather,color,style,category, image} = req.body;
+    const {owner, image, name, season, colorsRange, style, category, notes } = req.body;
     const article = new articleModel({
-      owner, articleName, weather,color,style,category,
+      owner, name, season, colorsRange, style, category, notes,
       image: req.body.image || ''
     });
 
@@ -27,8 +27,8 @@ module.exports = {
   },
 
   update: (req, res) => {
-    const {owner, articleName, weather,color,style,category, image} = req.body;
-    const updates = {owner, articleName, weather,color,style,category, image};
+    const {owner, image, name, season, colorsRange, style, category, notes } = req.body;
+    const updates = {owner, image, name, season, colorsRange, style, category, notes } ;
 
     articleModel.findByIdAndUpdate(req.params.id, updates, {new:true})
       .then(p => res.status(200).json(p))

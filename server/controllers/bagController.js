@@ -15,8 +15,8 @@ module.exports = {
   },
 
   create: (req, res) => {
-    const {owner, articlesList, outfitsList, bagName, date, numDays} = req.body;
-    const bag = new bagModel({owner, articlesList, outfitsList, bagName, date, numDays});
+    const {owner, articlesList, outfitsList, travelName, travelDate, travelDays, notes } = req.body;
+    const bag = new bagModel({owner, articlesList, outfitsList, travelName, travelDate, travelDays, notes});
 
     bag.save()
       .then( b => res.status(200).json({message: 'New Bag created!', bag:b}))
@@ -24,8 +24,8 @@ module.exports = {
   },
 
   update: (req, res) => {
-    const {owner, articlesList, outfitsList, bagName, date, numDays} = req.body;
-    const updates = {owner, articlesList, outfitsList, bagName, date, numDays};
+    const {owner, articlesList, outfitsList, travelName, travelDate, travelDays, notes} = req.body;
+    const updates = {owner, articlesList, outfitsList, travelName, travelDate, travelDays, notes};
 
     bagModel.findByIdAndUpdate(req.params.id, updates, {new:true})
       .then(bag => res.status(200).json(bag))
