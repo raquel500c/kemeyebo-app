@@ -1,18 +1,16 @@
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
-const session    = require('express-session');
+const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const logger = require('morgan');
-const passport   = require('passport');
+const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const debug = require('debug')("angularauth:"+path.basename(__filename).split('.')[0]);
+const debug = require('debug')("angularauth:" + path.basename(__filename).split('.')[0]);
 
 const authRoutes = require('./routes/auth');
-const articleRoutes = require('./routes/articleRoutes');
-const outfitRoutes = require('./routes/outfitRoutes');
-const bagRoutes = require('./routes/bagRoutes');
+const routes = require('./routes/index');
 
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -53,15 +51,14 @@ app.use(session({
   cookie : { httpOnly: true, maxAge: 60*60*24*365 },
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
+
 require('./passport/serializers');
 require('./passport/local');
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/auth', authRoutes);
-app.use('/articles', articleRoutes);
-app.use('/outfits', outfitRoutes);
-app.use('/bags', bagRoutes);
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -76,7 +73,6 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   console.error(err);
-  // render the error page
   res.status(err.status || 500);
   res.render('error');
 });

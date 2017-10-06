@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const outfitController = require('../controllers/outfitController.js');
+const outfitController = require('../../controllers/outfitController.js');
 const mongoose = require('mongoose');
 
 const checkIDParam = (req,res,next) =>{

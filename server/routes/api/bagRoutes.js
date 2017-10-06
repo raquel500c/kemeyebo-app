@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const bagController = require('../controllers/bagController.js');
+const bagController = require('../../controllers/bagController.js');
 const mongoose = require('mongoose');
 
 const checkIDParam = (req,res,next) =>{

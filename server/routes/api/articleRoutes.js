@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const articleController = require('../controllers/articleController.js');
+const articleController = require('../../controllers/articleController.js');
 const mongoose = require('mongoose');
 
 const checkIDParam = (req,res,next) =>{
