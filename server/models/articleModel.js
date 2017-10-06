@@ -8,17 +8,17 @@ const articleSchema = new Schema({
   name: String,
   season: {
     type: String,
-    enum: ['primavera','verano','otoño','invierno','todas'],
+    enum: ['primavera','verano','otoño','invierno', 'entre tiempo','todas'],
     default: 'todas'
   },
   colorsRange:{
     type: String,
     enum: ['blanco', 'crema', 'gris','negro','azul','rojo','amarillo',
-  'verde','morado','naranja','rosa','plateado','dorado', 'marrón']
+  'verde','morado','naranja','rosa','plateado','dorado', 'marrón','multicolor']
   },
 	style: {
     type: String,
-    enum: ['informal', 'casual', 'deporte', 'fiesta','formal','formal-playa','etiqueta','varios']  
+    enum: ['informal', 'trabajo', 'deporte', 'fiesta','formal','formal-playa','etiqueta','varios']
   },
   category: {
     type: String,
