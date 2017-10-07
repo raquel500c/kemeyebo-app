@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { RouterModule } from '@angular/router';
 import { IsLoggedInService } from './services/isLoggedIn.canactivate.service';
+import { ArticlesService } from './services/articles.service';
 import {routes} from './routes';
 import { SignupformComponent } from './signupform/signupform.component';
 
@@ -26,7 +27,7 @@ import { SignupformComponent } from './signupform/signupform.component';
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthService, IsLoggedInService],
+  providers: [AuthService, IsLoggedInService, ArticlesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
