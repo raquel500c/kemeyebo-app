@@ -1,0 +1,12 @@
+<p>
+  articles-list works!
+</p>
+<div class='container'>
+  <h2>Articles List</h2>
+  <hr />
+  <div *ngFor="let article of articles" class="article-card">
+    <h5>{{article.name | uppercase }}</h5>
+    <img [src]="article.image" class="img-article">
+    <a [routerLink]="['/article', article._id]">Article Detail</a>
+  </div>
+</div>
