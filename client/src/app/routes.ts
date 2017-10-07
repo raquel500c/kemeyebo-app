@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
+import {IsLoggedInService} from './services/isLoggedIn.canactivate.service';
 
 import {HomeComponent} from './home/home.component';
 import {UserprofileComponent} from './userprofile/userprofile.component';
 import {LoginformComponent} from './loginform/loginform.component';
 import {SignupformComponent} from './signupform/signupform.component';
+
 import { ArticlesListComponent } from './articles-list/articles-list.component';
-import {IsLoggedInService} from './services/isLoggedIn.canactivate.service';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -13,5 +15,6 @@ export const routes: Routes = [
     { path: 'login',  component: LoginformComponent,  },
     { path: 'signup',  component: SignupformComponent,  },
     { path: 'articles', component: ArticlesListComponent },
+    { path: 'article/:id', component: ArticleDetailComponent },
     { path: '**', redirectTo: '' }
 ];
