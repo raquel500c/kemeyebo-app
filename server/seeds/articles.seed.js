@@ -93,7 +93,7 @@ const articles =[
   },
   {
     owner: user._id,
-    image: "https://static.e-stradivarius.net/5/photos2/2017/I/0/1/p/4851/549/702/4851549702_1_1_2.jpg?t=1501171798885",
+    image: "https://static.e-stradivarius.net/5/photos2/2017/I/0/1/p/4851/549/702/4851549702_2_4_2.jpg?t=1501171798885",
     name:"vaqueros roto tiro alto",
     season: "todas",
     colorsRange:"azul",
