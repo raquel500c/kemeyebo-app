@@ -2,10 +2,13 @@
 
 <div *ngIf="article" class='container'>
   <h2>Detalle {{article.name}}</h2>
+  <button (click)="deleteArticle()"> Eliminar </button>
+  
   <img [src]="article.image" class="img-article">
   <p>Temporada: {{article.season}}</p>
   <p>Gama de color:{{article.colorsRange}}</p>
   <p>Estilo / Ocasión: {{article.style}}</p>
   <p> Tipo prenda: {{article.category}}</p>
   <p>Notas: {{article.notes}}</p>
+
 </div>

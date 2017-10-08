@@ -20,10 +20,27 @@ export class ArticleDetailComponent implements OnInit {
     this.getArticleDetail(params['id'])
   })
 }
-getArticleDetail(id) {
-  this.articlesService.get(id)
-    .subscribe((article) => {
-      this.article = article
-    })
-}
+
+  getArticleDetail(id) {
+    this.articlesService.get(id)
+      .subscribe((article) => {
+        this.article = article
+      })
+  }
+
+  editArticle() {
+    this.articlesService.edit(this.article)
+      .subscribe(() => {
+      this.router.navigate(['/articles/']);
+      });
+  }
+
+  deleteArticle(){
+    if (window.confirm('¿Estás seguro?')) {
+      this.articlesService.remove(this.article._id)
+        .subscribe(() => {
+          this.router.navigate(['/articles/']);
+        });
+    }
+  }
 }
