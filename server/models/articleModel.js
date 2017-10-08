@@ -8,21 +8,21 @@ const articleSchema = new Schema({
   name: String,
   season: {
     type: String,
-    enum: ['primavera','verano','otoño','invierno', 'entre tiempo','todas'],
+    enum: ['primavera','verano','otoño','invierno', 'entre tiempo','todas',''],
     default: 'todas'
   },
   colorsRange:{
     type: String,
     enum: ['blanco', 'crema', 'gris','negro','azul','rojo','amarillo',
-  'verde','morado','naranja','rosa','plateado','dorado', 'marrón','multicolor']
+  'verde','morado','naranja','rosa','plateado','dorado', 'marrón','multicolor','']
   },
 	style: {
     type: String,
-    enum: ['informal', 'trabajo', 'deporte', 'fiesta','formal','formal-playa','etiqueta','varios']
+    enum: ['informal', 'trabajo', 'deporte', 'fiesta','formal','formal-playa','etiqueta','varios','']
   },
   category: {
     type: String,
-    enum: ['parte de arriba', 'parte de abajo', 'cuerpo entero', 'calzado', 'accesorio', 'ropa interior', 'otra'],
+    enum: ['parte de arriba', 'parte de abajo', 'cuerpo entero', 'calzado', 'accesorio', 'ropa interior', 'otra',''],
     default: 'otra'
   },
   notes: String,

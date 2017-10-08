@@ -28,13 +28,6 @@ export class ArticleDetailComponent implements OnInit {
       })
   }
 
-  editArticle() {
-    this.articlesService.edit(this.article)
-      .subscribe(() => {
-      this.router.navigate(['/articles/']);
-      });
-  }
-
   deleteArticle(){
     if (window.confirm('¿Estás seguro?')) {
       this.articlesService.remove(this.article._id)

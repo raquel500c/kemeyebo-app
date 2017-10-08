@@ -1,4 +1,5 @@
 const articleModel = require('../models/articleModel.js');
+const upload = require('../config/multer');
 
 module.exports = {
 
@@ -15,10 +16,10 @@ module.exports = {
   },
 
   create: (req, res) => {
-    const {owner, image, name, season, colorsRange, style, category, notes } = req.body;
+    const {owner, name, season, colorsRange, style, category, notes } = req.body;
     const article = new articleModel({
       owner, name, season, colorsRange, style, category, notes,
-      image: req.body.image || ''
+       image: `/uploads/${req.file.filename} `
     });
 
     article.save()

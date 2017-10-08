@@ -44,7 +44,7 @@ const articles =[
   {
     owner: user._id,
     image: "https://static.e-stradivarius.net/5/photos2/2017/I/1/1/p/6837/241/040/6837241040_1_1_2.jpg?t=1506585486416",
-    name:"botines",
+    name:"botines cremallera",
     season: "otoño",
     colorsRange:"negro",
     style:"varios",

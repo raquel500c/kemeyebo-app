@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const articleController = require('../../controllers/articleController.js');
 const mongoose = require('mongoose');
+const articleController = require('../../controllers/articleController.js');
+const upload = require('../../config/multer');
 
 const checkIDParam = (req,res,next) =>{
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -13,7 +14,7 @@ const checkIDParam = (req,res,next) =>{
 
 router.get('/', articleController.list);
 router.get('/:id', checkIDParam, articleController.show);
-router.post('/', articleController.create);
+router.post('/', upload.single('file'), articleController.create);
 router.put('/:id', checkIDParam, articleController.update);
 router.delete('/:id', checkIDParam, articleController.remove);
 

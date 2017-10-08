@@ -1,12 +1,13 @@
-<p>
-  articles-list works!
-</p>
 <div class='container'>
-  <h2>Articles List</h2>
+  <h2>Lista de prendas</h2>
+  <a [routerLink]="['/add']">Añadir nueva prenda</a>
   <hr />
   <div *ngFor="let article of articles" class="article-card">
     <h5>{{article.name | uppercase }}</h5>
+
+    <img [src]="'http://localhost:3000/' + article.image" class="img-article" />
     <img [src]="article.image" class="img-article">
-    <a [routerLink]="['/article', article._id]">Article Detail</a>
+    
+    <a [routerLink]="['/article', article._id]">Detalle prenda</a>
   </div>
 </div>

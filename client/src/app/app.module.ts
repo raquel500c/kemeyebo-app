@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { NgSelectOption } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginformComponent } from './loginform/loginform.component';
 import { AuthService } from './services/auth.service';
@@ -14,6 +15,8 @@ import {routes} from './routes';
 import { SignupformComponent } from './signupform/signupform.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
+import { AddArticleComponent } from './add-article/add-article.component';
+import { FileSelectDirective } from "ng2-file-upload";
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
     UserprofileComponent,
     SignupformComponent,
     ArticlesListComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    AddArticleComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

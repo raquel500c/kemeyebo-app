@@ -7,7 +7,9 @@ import {LoginformComponent} from './loginform/loginform.component';
 import {SignupformComponent} from './signupform/signupform.component';
 
 import { ArticlesListComponent } from './articles-list/articles-list.component';
+import { AddArticleComponent } from './add-article/add-article.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
+
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -15,6 +17,7 @@ export const routes: Routes = [
     { path: 'login',  component: LoginformComponent,  },
     { path: 'signup',  component: SignupformComponent,  },
     { path: 'articles', component: ArticlesListComponent },
+    { path: 'add', component: AddArticleComponent },
     { path: 'article/:id', component: ArticleDetailComponent },
     { path: '**', redirectTo: '' }
 ];

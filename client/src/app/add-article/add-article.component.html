@@ -1,0 +1,37 @@
+<h1> Crear nueva prenda </h1>
+
+<a [routerLink]="['/articles']"> Volver a la lista </a>
+
+<form>
+  <div class="form-group">
+
+    <label> Nombre* </label>
+    <input type="text" [(ngModel)]="newArticle.name" name="name" required />
+
+    <label> Imagen </label>
+    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+
+    <label> Temporada </label>
+    <!-- <select class="form-control" name="season" [(ngModel)]="newArticle.season">
+    <option *ngFor="let s of seasons" [ngValue]="s"> {{ s }} </option>
+    </select> -->
+    <input type="text" [(ngModel)]="newArticle.season" name="season"  />
+
+    <label> Gama de color </label>
+    <input type="text" [(ngModel)]="newArticle.colorsRange" name="colorsRange"  />
+
+    <label> Estilo | Ocasión </label>
+    <input type="text" [(ngModel)]="newArticle.style" name="style"  />
+
+    <label> Tipo prenda* </label>
+    <input type="text" [(ngModel)]="newArticle.category" name="category" required/>
+
+    <label> Notas </label>
+    <input type="text" [(ngModel)]="newArticle.notes" name="notes"  />
+
+
+    <button (click)="submit()"> Crear </button>
+  </div>
+</form>
+
+<p> {{ feedback }} </p>
