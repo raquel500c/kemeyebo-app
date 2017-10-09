@@ -17,6 +17,10 @@ const cors = require('cors');
 
 const app = express();
 
+if (process.env.NODE_ENV === "development") {
+  require('dotenv').config();
+}
+
 require('./config/database');
 
 const whitelist = [
@@ -32,12 +36,10 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.use((req, res, next) => {
+  res.sendfile(__dirname + '/public/index.html');
+});
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

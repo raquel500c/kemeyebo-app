@@ -3,20 +3,27 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { NgSelectOption } from '@angular/forms';
-import { AppComponent } from './app.component';
-import { LoginformComponent } from './loginform/loginform.component';
-import { AuthService } from './services/auth.service';
-import { HomeComponent } from './home/home.component';
-import { UserprofileComponent } from './userprofile/userprofile.component';
+import {routes} from './routes';
 import { RouterModule } from '@angular/router';
+import { FileUploadModule } from "ng2-file-upload";
+
+import { AuthService } from './services/auth.service';
 import { IsLoggedInService } from './services/isLoggedIn.canactivate.service';
 import { ArticlesService } from './services/articles.service';
-import {routes} from './routes';
+
+
+import { AppComponent } from './app.component';
+import { LoginformComponent } from './loginform/loginform.component';
+import { HomeComponent } from './home/home.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 import { SignupformComponent } from './signupform/signupform.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { AddArticleComponent } from './add-article/add-article.component';
-import { FileSelectDirective } from "ng2-file-upload";
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -27,13 +34,13 @@ import { FileSelectDirective } from "ng2-file-upload";
     SignupformComponent,
     ArticlesListComponent,
     ArticleDetailComponent,
-    AddArticleComponent,
-    FileSelectDirective
+    AddArticleComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    FileUploadModule,
     RouterModule.forRoot(routes)
   ],
   providers: [AuthService, IsLoggedInService, ArticlesService],

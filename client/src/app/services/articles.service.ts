@@ -27,7 +27,7 @@ export class ArticlesService {
   }
 
   newArticle () {
-    return this.http.post(`${this.BASE_URL}/api/articles` , this.options )
+    return this.http.post(`${this.BASE_URL}/api/articles`, this.options )
      .map (res => res.json());
   }
   get(id) {
