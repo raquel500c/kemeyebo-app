@@ -11,6 +11,9 @@ import {Observable} from 'rxjs/Observable'
 export class AddArticleComponent implements OnInit {
   articles;
 
+  season = ['primavera','verano','otoño','invierno', 'entre tiempo','todas'];
+  colorsRange = ['blanco', 'crema', 'gris','negro','azul','rojo','amarillo'];
+
   uploader: FileUploader = new FileUploader({
   url: 'http://localhost:3000/api/articles/'
   });

@@ -11,23 +11,30 @@
     <label> Imagen </label>
     <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
 
-    <label> Temporada </label>
-    <!-- <select class="form-control" name="season" [(ngModel)]="newArticle.season">
-    <option *ngFor="let s of seasons" [ngValue]="s"> {{ s }} </option>
-    </select> -->
-    <input type="text" [(ngModel)]="newArticle.season" name="season"  />
 
-    <label> Gama de color </label>
-    <input type="text" [(ngModel)]="newArticle.colorsRange" name="colorsRange"  />
+    <label for="season">Temporada</label>
+    <!-- <input type="text" [(ngModel)]="newArticle.season" name="season"  /> -->
+    <select class="form-control"  id="season" [(ngModel)]="newArticle.season" name="season">
+      <option *ngFor="let s of season" [value]="s">{{s}}</option>
+    </select>
+
+     <!-- <label> Gama de color </label> -->
+    <!-- <input type="text" [(ngModel)]="newArticle.colorsRange" name="colorsRange"  /> -->
+    <!-- <select class="form-control"  id="power" [(ngModel)]="newArticle.season" name="season"> -->
+      <!-- <option *ngFor="let s of season" [value]="s">{{s}}</option> -->
+    <!-- </select> -->
 
     <label> Estilo | Ocasión </label>
-    <input type="text" [(ngModel)]="newArticle.style" name="style"  />
+    <!-- <input type="text" [(ngModel)]="newArticle.style" name="style"  /> -->
+
 
     <label> Tipo prenda* </label>
-    <input type="text" [(ngModel)]="newArticle.category" name="category" required/>
+    <!-- <input type="text" [(ngModel)]="newArticle.category" name="category" required/> -->
+
 
     <label> Notas </label>
-    <input type="text" [(ngModel)]="newArticle.notes" name="notes"  />
+    <!-- <input type="text" [(ngModel)]="newArticle.notes" name="notes"  /> -->
+
 
 
     <button (click)="submit()"> Crear </button>

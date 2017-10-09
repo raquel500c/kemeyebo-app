@@ -12,6 +12,15 @@ export class ArticlesService {
   getList() {
     return this.http.get(`${this.BASE_URL}/api/articles`)
       .map((res) => res.json())
+      .map( list => {
+        return list.map( e => {
+          if (!e.image.includes('http')){
+            e.image = this.BASE_URL+e.image;
+          };
+          console.log(e.image);
+          return e;
+        });
+      })
   }
 
   newArticle () {
