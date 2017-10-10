@@ -3,22 +3,22 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { environment } from '../../environments/environment';
-const  BASE_URL: string = environment.BASEURL;
+const BASE_URL: string = environment.BASEURL + "/api";
 
 @Injectable()
 export class ArticlesService {
-  public BASE_URL= environment.BASEURL;
-  options : {withCredentials:true };
+
+  options : { withCredentials:true };
 
   constructor(private http: Http) { }
 
   getList() {
-    return this.http.get(`${this.BASE_URL}/api/articles`)
+    return this.http.get(`${BASE_URL}/articles`)
       .map((res) => res.json())
       .map( list => {
         return list.map( e => {
-          if (!e.image.includes('http')){
-            e.image = this.BASE_URL+e.image;
+          if (!e.image.includes('http')) {
+          e.image = BASE_URL + e.image;
           };
           console.log(e.image);
           return e;
@@ -27,21 +27,21 @@ export class ArticlesService {
   }
 
   newArticle () {
-    return this.http.post(`${this.BASE_URL}/api/articles` , this.options )
+    return this.http.post(`${BASE_URL}/articles`, this.options )
      .map (res => res.json());
   }
   get(id) {
-    return this.http.get(`${this.BASE_URL}/api/articles/${id}`)
+    return this.http.get(`${BASE_URL}/articles/${id}`)
       .map((res) => res.json())
   }
 
   edit(article) {
-       return this.http.put(`${this.BASE_URL}/api/articles/${article.id}`, article)
+       return this.http.put(`${BASE_URL}/articles/${article.id}`, article)
          .map((res) => res.json());
   }
 
   remove(id) {
-   return this.http.delete(`${this.BASE_URL}/api/articles/${id}`)
+   return this.http.delete(`${BASE_URL}/articles/${id}`)
      .map((res) => res.json());
   }
 

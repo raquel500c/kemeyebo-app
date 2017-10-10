@@ -7,7 +7,6 @@ const  BASE_URL: string = environment.BASEURL+ "/auth";
 
 @Injectable()
 export class AuthService {
-  public BASE_URL= environment.BASEURL;
   private user:object;
   private userLoginEvent:EventEmitter<any> = new EventEmitter<any>();
   private options = {withCredentials:true};
