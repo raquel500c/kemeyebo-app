@@ -12,7 +12,12 @@ export class AddArticleComponent implements OnInit {
   articles;
 
   season = ['primavera','verano','otoño','invierno', 'entre tiempo','todas'];
-  colorsRange = ['blanco', 'crema', 'gris','negro','azul','rojo','amarillo'];
+  color = ['blanco', 'crema', 'gris','negro','azul','rojo','amarillo',
+'verde','morado','naranja','rosa','plateado','dorado', 'marrón','multicolor'];
+  style = ['informal', 'casual', 'deporte', 'fiesta','formal','formal-playa',
+  'etiqueta', 'varios'];
+  category = ['parte de arriba', 'parte de abajo', 'cuerpo entero', 'calzado', 'accesorio', 'ropa interior', 'otra'];
+
 
   uploader: FileUploader = new FileUploader({
   url: 'http://localhost:3000/api/articles/'

@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { environment } from '../../environments/environment';
-const BASE_URL: string = environment.BASEURL + "/api";
+const BASE_URL: string = environment.BASEURL ;
 
 @Injectable()
 export class ArticlesService {
@@ -13,7 +13,7 @@ export class ArticlesService {
   constructor(private http: Http) { }
 
   getList() {
-    return this.http.get(`${BASE_URL}/articles`)
+    return this.http.get(`${BASE_URL}/api/articles`)
       .map((res) => res.json())
       .map( list => {
         return list.map( e => {
@@ -27,21 +27,22 @@ export class ArticlesService {
   }
 
   newArticle () {
-    return this.http.post(`${BASE_URL}/articles`, this.options )
+    return this.http.post(`${BASE_URL}/api/articles`, this.options )
      .map (res => res.json());
+
   }
   get(id) {
-    return this.http.get(`${BASE_URL}/articles/${id}`)
+    return this.http.get(`${BASE_URL}/api/articles/${id}`)
       .map((res) => res.json())
   }
 
   edit(article) {
-       return this.http.put(`${BASE_URL}/articles/${article.id}`, article)
+       return this.http.put(`${BASE_URL}/api/articles/${article.id}`, article)
          .map((res) => res.json());
   }
 
   remove(id) {
-   return this.http.delete(`${BASE_URL}/articles/${id}`)
+   return this.http.delete(`${BASE_URL}/api/articles/${id}`)
      .map((res) => res.json());
   }
 

@@ -9,18 +9,17 @@ const outfitSchema = new Schema({
 	season: {
 		type: String,
 		enum: ['primavera', 'verano', 'otoño','invierno','todas'],
-		default: ''
+		default: 'todas'
 	},
 	colorsRange:{
 		type: String,
 		enum: ['blanco', 'crema', 'gris','negro','azul','rojo','amarillo',
-	'verde','morado','naranja','rosa','plateado','dorado', 'marrón',''],
-		default: ''
+  'verde','morado','naranja','rosa','plateado','dorado', 'marrón','multicolor']
 	},
 	style: {
     type: String,
-    enum: ['informal', 'casual', 'deporte', 'fiesta','formal','formal-playa','etiqueta',''],
-    default: ''
+    enum: ['informal', 'casual', 'deporte', 'fiesta','formal','formal-playa','etiqueta', 'varios'],
+    default: 'varios'
 	},
 	notes: String,
 }, {

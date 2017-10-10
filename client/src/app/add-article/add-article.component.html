@@ -13,31 +13,30 @@
 
 
     <label for="season">Temporada</label>
-    <!-- <input type="text" [(ngModel)]="newArticle.season" name="season"  /> -->
     <select class="form-control"  id="season" [(ngModel)]="newArticle.season" name="season">
       <option *ngFor="let s of season" [value]="s">{{s}}</option>
     </select>
 
-     <!-- <label> Gama de color </label> -->
-    <!-- <input type="text" [(ngModel)]="newArticle.colorsRange" name="colorsRange"  /> -->
-    <!-- <select class="form-control"  id="power" [(ngModel)]="newArticle.season" name="season"> -->
-      <!-- <option *ngFor="let s of season" [value]="s">{{s}}</option> -->
-    <!-- </select> -->
+     <label for="color">Gama de color </label>
+    <select class="form-control"  id="color" [(ngModel)]="newArticle.colorsRange" name="color">
+      <option *ngFor="let c of color" [value]="c">{{c}}</option>
+    </select>
 
-    <label> Estilo | Ocasión </label>
-    <!-- <input type="text" [(ngModel)]="newArticle.style" name="style"  /> -->
+    <label for="style"> Estilo | Ocasión </label>
+    <select class="form-control"  id="style" [(ngModel)]="newArticle.style" name="style">
+      <option *ngFor="let s of style" [value]="s">{{s}}</option>
+    </select>
 
-
-    <label> Tipo prenda* </label>
-    <!-- <input type="text" [(ngModel)]="newArticle.category" name="category" required/> -->
-
+    <label for="category"> Tipo prenda </label>
+    <select class="form-control"  id="category" [(ngModel)]="newArticle.category" name="category">
+      <option *ngFor="let c of category" [value]="c">{{c}}</option>
+    </select>
 
     <label> Notas </label>
-    <!-- <input type="text" [(ngModel)]="newArticle.notes" name="notes"  /> -->
-
-
+    <input type="text" [(ngModel)]="newArticle.notes" name="notes"  />
 
     <button (click)="submit()"> Crear </button>
+    
   </div>
 </form>
 
