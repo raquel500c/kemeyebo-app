@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ArticlesService} from '../services/articles.service';
-import {Observable} from 'rxjs/Observable'
+import {Observable} from 'rxjs/Observable';
+import { ActivatedRoute, Router } from '@angular/router';
 declare const $:any;
 
 @Component({
@@ -10,26 +11,23 @@ declare const $:any;
 })
 export class ArticlesListComponent implements OnInit {
   articles;
-  constructor(public articlesService : ArticlesService) { }
+  article;
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private articlesService : ArticlesService) { }
 
   ngOnInit() {
-     this.articlesService.getList().subscribe(result => this.articles = result)
+    this.articlesService.getList().subscribe(result => this.articles = result)
   }
 
-  // getArticleDetail(id) {
-  //   this.articlesService.get(id)
-  //     .subscribe((article) => {
-  //       this.article = article
-  //     })
-  // }
-  //
-  // deleteArticle(){
-  //   if (window.confirm('¿Estás seguro?')) {
-  //     this.articlesService.remove(this.article._id)
-  //       .subscribe(() => {
-  //         this.router.navigate(['/articles/']);
-  //       });
-  //   }
-  // }
+  deleteArticle(id){
+    if (window.confirm('¿Estás seguro?')) {
+      this.articlesService.remove(id)
+        .subscribe(() => {
+        this.articlesService.getList().subscribe(result => this.articles = result)
+        });
+    }
+  }
 
 }

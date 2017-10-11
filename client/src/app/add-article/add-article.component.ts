@@ -16,7 +16,7 @@ export class AddArticleComponent implements OnInit {
 
   season = ['primavera','verano','otoño','invierno', 'entre tiempo','todas'];
   color = ['blanco', 'crema', 'gris','negro','azul','rojo','amarillo',
-'verde','morado','naranja','rosa','plateado','dorado', 'marrón','multicolor'];
+  'verde','morado','naranja','rosa','plateado','dorado', 'marrón','multicolor'];
   style = ['informal', 'casual', 'trabajo', 'deporte', 'fiesta','formal','formal-playa','etiqueta','varios'];
   category = ['parte de arriba', 'parte de abajo', 'cuerpo entero', 'calzado', 'accesorio', 'ropa interior', 'otra'];
 

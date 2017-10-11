@@ -19,7 +19,7 @@
            <p>Gama color: {{article.colorsRange}}</p>
            <p>Ocasión: {{article.style}}</p>
            <p> Tipo: {{article.category}}</p>
-            <button (click)="deleteArticle()" class="btn-floating btn-large waves-effect waves-light red right"><i class="material-icons">delete</i></button>
+            <button (click)="deleteArticle(article._id)" class="btn-floating btn-large waves-effect waves-light red right"><i class="material-icons">delete</i></button>
            <p >Notas: {{article.notes}}</p>
         </div>
     </div>
