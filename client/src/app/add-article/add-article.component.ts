@@ -63,8 +63,7 @@ export class AddArticleComponent implements OnInit {
     };
 
     this.uploader.uploadAll();
-    this.uploader.onCompleteItem = () => console.log("hecho")
-    // this.router.navigate(['/articles']);
+    this.uploader.onCompleteItem = () => this.router.navigate(['/articles']);
 
   }
 
