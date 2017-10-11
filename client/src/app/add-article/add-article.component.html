@@ -1,8 +1,9 @@
+<div class="container">
 <h1> Crear nueva prenda </h1>
 
 <a [routerLink]="['/articles']"> Volver a la lista </a>
-
-<form>
+<div class='form-container'>
+<form  class="col s12">
   <div class="form-group">
 
     <label> Nombre* </label>
@@ -13,22 +14,22 @@
 
 
     <label for="season">Temporada</label>
-    <select class="form-control"  id="season" [(ngModel)]="newArticle.season" name="season">
+    <select materialize='material_select' class="form-control"  id="season" [(ngModel)]="newArticle.season" name="season">
       <option *ngFor="let s of season" [value]="s">{{s}}</option>
     </select>
 
      <label for="color">Gama de color </label>
-    <select class="form-control"  id="color" [(ngModel)]="newArticle.colorsRange" name="color">
+    <select materialize='material_select' class="form-control"  id="color" [(ngModel)]="newArticle.colorsRange" name="color">
       <option *ngFor="let c of color" [value]="c">{{c}}</option>
     </select>
 
     <label for="style"> Estilo | Ocasión </label>
-    <select class="form-control"  id="style" [(ngModel)]="newArticle.style" name="style">
+    <select materialize='material_select' class="form-control"  id="style" [(ngModel)]="newArticle.style" name="style">
       <option *ngFor="let s of style" [value]="s">{{s}}</option>
     </select>
 
     <label for="category"> Tipo prenda </label>
-    <select class="form-control"  id="category" [(ngModel)]="newArticle.category" name="category">
+    <select materialize='material_select' class="form-control"  id="category" [(ngModel)]="newArticle.category" name="category">
       <option *ngFor="let c of category" [value]="c">{{c}}</option>
     </select>
 
@@ -36,8 +37,9 @@
     <input type="text" [(ngModel)]="newArticle.notes" name="notes"  />
 
     <button (click)="submit()"> Crear </button>
-    
+
   </div>
 </form>
-
+</div>
 <p> {{ feedback }} </p>
+</div>

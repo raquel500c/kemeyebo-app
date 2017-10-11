@@ -18,7 +18,7 @@ const articleSchema = new Schema({
   },
 	style: {
     type: String,
-    enum: ['informal', 'trabajo', 'deporte', 'fiesta','formal','formal-playa','etiqueta','varios']
+    enum: ['informal', 'casual', 'trabajo', 'deporte', 'fiesta','formal','formal-playa','etiqueta','varios']
   },
   category: {
     type: String,

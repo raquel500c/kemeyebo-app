@@ -1,3 +1,16 @@
-.img-article {
+.card-image{
+  max-height: 400px;
+}
+
+h2 {
+  display: inline;
+}
+
+.img-article{
   height: 300px;
+
+}
+
+.card-title{
+  min-height: 70px;
 }

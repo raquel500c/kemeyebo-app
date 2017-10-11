@@ -1,30 +1,28 @@
 <div class='container'>
-  <h2>Lista de prendas</h2>
-  <a [routerLink]="['/add']">Añadir nueva prenda</a>
-  <hr />
-  <!-- <div *ngFor="let article of articles" class="article-card">
-    <h5>{{article.name | uppercase }}</h5>
+<h2>Lista de prendas</h2>
+  <a [routerLink]="['/add']" class="btn-floating btn-large waves-effect waves-light red right"><i class="material-icons right">add</i></a>
 
-    <img [src]="article.image" class="img-article">
-
-    <a [routerLink]="['/article', article._id]">Detalle prenda</a>
-  </div> -->
-<!-- </div> -->
-
-<div class="row">
-      <div class="col s6 m6" *ngFor="let article of articles" class="article-card">
-        <div class="card">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img [src]="article.image" class="img-article activator">
-            <span class="card-title">{{article.name | uppercase }}</span>
-          </div>
-          <div class="card-content">
-
-          </div>
-          <div class="card-action">
-              <a [routerLink]="['/article', article._id]">Detalle prenda</a>
-          </div>
+  <div class="row">
+    <div class="card large article-card col s6 m4 l3" *ngFor="let article of articles" >
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator img-article" [src]="article.image">
         </div>
-      </div>
+
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{article.name | uppercase }}<i class="material-icons right">more_vert</i></span>
+          <p><a href="#">edit de paripé</a></p>
+        </div>
+
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{article.name | uppercase }}<i class="material-icons right">close</i></span>
+           <p>Temporada: {{article.season}}</p>
+           <p>Gama color: {{article.colorsRange}}</p>
+           <p>Ocasión: {{article.style}}</p>
+           <p> Tipo: {{article.category}}</p>
+            <button (click)="deleteArticle()" class="btn-floating btn-large waves-effect waves-light red right"><i class="material-icons">delete</i></button>
+           <p >Notas: {{article.notes}}</p>
+        </div>
     </div>
+  </div>
+
 </div>

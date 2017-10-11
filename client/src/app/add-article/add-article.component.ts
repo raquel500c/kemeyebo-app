@@ -17,8 +17,7 @@ export class AddArticleComponent implements OnInit {
   season = ['primavera','verano','otoño','invierno', 'entre tiempo','todas'];
   color = ['blanco', 'crema', 'gris','negro','azul','rojo','amarillo',
 'verde','morado','naranja','rosa','plateado','dorado', 'marrón','multicolor'];
-  style = ['informal', 'casual', 'deporte', 'fiesta','formal','formal-playa',
-  'etiqueta', 'varios'];
+  style = ['informal', 'casual', 'trabajo', 'deporte', 'fiesta','formal','formal-playa','etiqueta','varios'];
   category = ['parte de arriba', 'parte de abajo', 'cuerpo entero', 'calzado', 'accesorio', 'ropa interior', 'otra'];
 
 
@@ -41,7 +40,7 @@ export class AddArticleComponent implements OnInit {
 
   ngOnInit() {
 
-    $('select').material_select();
+    //$('select').material_select();
 
     // this.uploader.onSuccessItem = (item, response) => {
     //   this.feedback = JSON.parse(response).message;
@@ -53,6 +52,7 @@ export class AddArticleComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.newArticle)
     this.uploader.onBuildItemForm = (item, form) => {
       form.append('name', this.newArticle.name);
       form.append('season', this.newArticle.season);
