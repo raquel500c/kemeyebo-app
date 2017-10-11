@@ -17,6 +17,7 @@ import { ArticlesListComponent } from './articles-list/articles-list.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { AddArticleComponent } from './add-article/add-article.component';
 import { FileSelectDirective } from "ng2-file-upload";
+import { MaterializeModule } from 'angular2-materialize';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FileSelectDirective } from "ng2-file-upload";
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MaterializeModule
   ],
   providers: [AuthService, IsLoggedInService, ArticlesService],
   bootstrap: [AppComponent]

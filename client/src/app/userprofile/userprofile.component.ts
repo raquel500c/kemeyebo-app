@@ -8,6 +8,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class UserprofileComponent implements OnInit {
   user:object;
+  title = 'Kemeyebo';
   constructor(public auth:AuthService) {
     this.user = this.auth.getUser();
     this.auth.getLoginEventEmitter()

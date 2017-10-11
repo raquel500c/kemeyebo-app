@@ -1,10 +1,30 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <ul>
-  <li><a [routerLink]="['/']">Home</a></li>
-  <li><a [routerLink]="['/user']">User Profile</a></li>
-  <li><a [routerLink]="['/login']">Login</a></li>
-  <li><a [routerLink]="['/signup']">Sign Up</a></li>
-  </ul>
+<nav>
+  <div class=" nav-wrapper text-lighten-4">
+    <a [routerLink]="['/']" class="brand-logo"><img id ="logo"src="../assets/logo.png" alt="">KeMeYeBo</a>
+    <a href="#" materialize="button-collapse" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul *ngIf="!user" class="right hide-on-med-and-down">
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li><a [routerLink]="['/login']"><i class="material-icons left">perm_identity</i>Log-In</a></li>
+      <li><a [routerLink]="['/signup']"><i class="material-icons left">input</i>Sign-Up</a></li>
+    </ul>
+    <ul *ngIf="user" class="right hide-on-med-and-down">
+      <li><a [routerLink]="['/articles']">Prendas</a></li>
+      <li><a [routerLink]="['/']"><i class="material-icons left">perm_identity</i>{{ user.username }} </a></li>
+      <li><a (click)="auth.logout().subscribe()"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+    </ul>
+    <ul class="side-nav" id="mobile-demo">
+      <ul *ngIf="!user">
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li><a [routerLink]="['/login']"><i class="material-icons left">perm_identity</i>Log-In</a></li>
+        <li><a [routerLink]="['/signup']"><i class="material-icons left">input</i>Sign-Up</a></li>
+      </ul>
+      <ul *ngIf="user">
+        <li><a [routerLink]="['/articles']">Prendas</a></li>
+        <li><a [routerLink]="['/']"><i class="material-icons left">perm_identity</i>{{ user.username }} </a></li>
+        <li><a (click)="auth.logout().subscribe()"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+      </ul>
+    </ul>
+  </div>
+</nav>
+
   <router-outlet></router-outlet>
-</div>

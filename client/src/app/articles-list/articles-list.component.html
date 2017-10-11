@@ -2,11 +2,29 @@
   <h2>Lista de prendas</h2>
   <a [routerLink]="['/add']">Añadir nueva prenda</a>
   <hr />
-  <div *ngFor="let article of articles" class="article-card">
+  <!-- <div *ngFor="let article of articles" class="article-card">
     <h5>{{article.name | uppercase }}</h5>
 
     <img [src]="article.image" class="img-article">
 
     <a [routerLink]="['/article', article._id]">Detalle prenda</a>
-  </div>
+  </div> -->
+<!-- </div> -->
+
+<div class="row">
+      <div class="col s6 m6" *ngFor="let article of articles" class="article-card">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img [src]="article.image" class="img-article activator">
+            <span class="card-title">{{article.name | uppercase }}</span>
+          </div>
+          <div class="card-content">
+
+          </div>
+          <div class="card-action">
+              <a [routerLink]="['/article', article._id]">Detalle prenda</a>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>

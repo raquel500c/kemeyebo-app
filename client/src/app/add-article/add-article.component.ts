@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FileUploader} from "ng2-file-upload";
 import { ActivatedRoute, Router } from '@angular/router';
 import {Observable} from 'rxjs/Observable'
+import {AuthService} from '../services/auth.service';
+
+declare const $:any;
 
 @Component({
   selector: 'app-add-article',
@@ -34,9 +37,12 @@ export class AddArticleComponent implements OnInit {
 
   feedback : string;
 
-  constructor() { }
+  constructor(public auth:AuthService, public router: Router) { }
 
   ngOnInit() {
+
+    $('select').material_select();
+
     // this.uploader.onSuccessItem = (item, response) => {
     //   this.feedback = JSON.parse(response).message;
     // }
@@ -58,7 +64,7 @@ export class AddArticleComponent implements OnInit {
 
     this.uploader.uploadAll();
     this.uploader.onCompleteItem = () => console.log("hecho")
-    // this.router.navigate(['/articles/']);
+    // this.router.navigate(['/articles']);
 
   }
 
