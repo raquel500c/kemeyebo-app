@@ -12,7 +12,7 @@ const checkIDParam = (req,res,next) =>{
   next();
 };
 
-router.get('/', articleController.list);
+router.get('/unico/:id', articleController.list);
 router.get('/:id', checkIDParam, articleController.show);
 router.post('/', upload.single('file'), articleController.create);
 router.put('/:id', checkIDParam, articleController.update);

@@ -1,10 +1,10 @@
 const articleModel = require('../models/articleModel.js');
-const upload = require('../config/multer');
 
 module.exports = {
 
   list: (req, res) => {
-    articleModel.find().populate('owner')
+    console.log(req.params.id)
+    articleModel.find({'owner': req.params.id})
       .then(articles => res.status(200).json(articles))
       .catch(e => res.status(500).json({error:e.message}));
   },
@@ -16,7 +16,8 @@ module.exports = {
   },
 
   create: (req, res) => {
-    const {owner, name, season, colorsRange, style, category, notes } = req.body;
+    const { owner, name, season, colorsRange, style, category, notes } = req.body;
+
     const article = new articleModel({
       owner, name, season, colorsRange, style, category, notes,
        image: `/uploads/${req.file.filename} `

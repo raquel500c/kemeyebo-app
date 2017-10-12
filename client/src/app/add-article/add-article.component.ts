@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FileUploader} from "ng2-file-upload";
+import { FileUploader } from "ng2-file-upload";
 import { ActivatedRoute, Router } from '@angular/router';
-import {Observable} from 'rxjs/Observable'
-import {AuthService} from '../services/auth.service';
+import { Observable } from 'rxjs/Observable'
+import { AuthService } from '../services/auth.service';
 
-declare const $:any;
+declare const $: any;
 
 @Component({
   selector: 'app-add-article',
@@ -13,30 +13,36 @@ declare const $:any;
 })
 export class AddArticleComponent implements OnInit {
   articles;
+  user: any;
 
-  season = ['primavera','verano','otoño','invierno', 'entre tiempo','todas'];
-  color = ['blanco', 'crema', 'gris','negro','azul','rojo','amarillo',
-  'verde','morado','naranja','rosa','plateado','dorado', 'marrón','multicolor'];
-  style = ['informal', 'casual', 'trabajo', 'deporte', 'fiesta','formal','formal-playa','etiqueta','varios'];
+  season = ['primavera', 'verano', 'otoño', 'invierno', 'entre tiempo', 'todas'];
+  color = ['blanco', 'crema', 'gris', 'negro', 'azul', 'rojo', 'amarillo',
+    'verde', 'morado', 'naranja', 'rosa', 'plateado', 'dorado', 'marrón', 'multicolor'];
+  style = ['informal', 'casual', 'trabajo', 'deporte', 'fiesta', 'formal', 'formal-playa', 'etiqueta', 'varios'];
   category = ['parte de arriba', 'parte de abajo', 'cuerpo entero', 'calzado', 'accesorio', 'ropa interior', 'otra'];
 
 
   uploader: FileUploader = new FileUploader({
-  url: 'http://localhost:3000/api/articles/'
+    url: 'http://localhost:3000/api/articles/'
   });
 
   newArticle = {
-    name : '',
-    season : '',
-    colorsRange : '',
-    style : '',
-    category : '',
-    notes : ''
+    owner: '',
+    name: '',
+    season: '',
+    colorsRange: '',
+    style: '',
+    category: '',
+    notes: ''
   }
 
-  feedback : string;
+  feedback: string;
 
-  constructor(public auth:AuthService, public router: Router) { }
+  constructor(public auth: AuthService, public router: Router) {
+    this.user = this.auth.getUser();
+    this.auth.getLoginEventEmitter()
+      .subscribe(user => this.user = user);
+  }
 
   ngOnInit() {
 
@@ -53,7 +59,9 @@ export class AddArticleComponent implements OnInit {
 
   submit() {
     console.log(this.newArticle)
+    this.newArticle.owner=this.user._id;
     this.uploader.onBuildItemForm = (item, form) => {
+      form.append('owner', this.newArticle.owner);
       form.append('name', this.newArticle.name);
       form.append('season', this.newArticle.season);
       form.append('colorsRange', this.newArticle.colorsRange);

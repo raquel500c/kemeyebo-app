@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./userprofile.component.css']
 })
 export class UserprofileComponent implements OnInit {
-  user:object;
+  user:any;
   title = 'Kemeyebo';
   constructor(public auth:AuthService) {
     this.user = this.auth.getUser();
