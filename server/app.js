@@ -40,7 +40,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //DEPLOY-->
-// app.use((req, res, next) => {res.sendfile(__dirname + '/public/index.html')});
+app.use((req, res, next) => {res.sendfile(__dirname + '/public/index.html')});
 
 app.use(session({
   secret: 'angular auth passport secret shh',
