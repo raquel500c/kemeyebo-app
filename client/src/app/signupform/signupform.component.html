@@ -1,6 +1,9 @@
 <div class="container">
-  <form>
-    <h2> Signup </h2>
+  <div class="card-panel white">
+    <div class='form-container'>
+      <form class="col s12">
+        <div class="form-group">
+    <!-- <h2> Signup </h2>
       <div class="input-field col s6">
     <label for="username" data-error="wrong" data-success="right"> Username </label>
     <input type="text" [(ngModel)]="formInfo.username" name="username" class="validate" required/>
@@ -14,4 +17,26 @@
       <i class="material-icons right">send</i>
     </button>
   </form>
+</div> -->
+<h2 class='red-text text-lighten-1'> Regístrate!</h2>
+<div class="row">
+  <div class="input-field col s6">
+    <label for="username" data-error="wrong" data-success="right"> Username </label>
+    <input type="text" [(ngModel)]="formInfo.username" name="username" class="validate" required/>
+  </div>
+  <div class="input-field col s6">
+    <label for="password" data-error="wrong" data-success="right">Password</label>
+    <input type="password" [(ngModel)]="formInfo.password" name="password" class="validate" required/>
+  </div>
+</div>
+  <button (click)="signup()" class="waves-effect waves-light btn blue-grey btn-margin" type='submit'>
+    SIGNUP
+    <i class="material-icons right">send</i>
+  </button>
+</div>
+</form>
+</div>
+<p> {{ feedback }} </p>
+</div>
+
 </div>

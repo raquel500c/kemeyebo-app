@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ArticlesService} from '../services/articles.service';
 import {Observable} from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
-declare const $:any;
 
 @Component({
   selector: 'app-articles-list',
@@ -26,7 +25,7 @@ export class ArticlesListComponent implements OnInit {
       this.articlesService.remove(id)
         .subscribe(() => {
         this.articlesService.getList().subscribe(result => this.articles = result)
-        });
+      });
     }
   }
 

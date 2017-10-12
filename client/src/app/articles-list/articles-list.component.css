@@ -1,16 +1,20 @@
-.card-image{
+/*.card-image{
   max-height: 400px;
-}
+}*/
 
 h2 {
   display: inline;
 }
 
-.img-article{
+/*.img-article{
   height: 300px;
 
 }
 
 .card-title{
   min-height: 70px;
+}*/
+
+.title{
+  margin-top: 20px
 }

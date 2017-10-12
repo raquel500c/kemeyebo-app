@@ -1,0 +1,19 @@
+.ng-touched {
+  border-color: blue;
+}
+
+.ng-touched.ng-invalid {
+  border-color: red;
+}
+
+.ng-touched.ng-valid {
+  border-color: green;
+}
+
+.form-container{
+  background-color: white ;
+}
+
+.card-panel{
+  margin-top:50px;
+}

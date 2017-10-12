@@ -1,45 +1,57 @@
 <div class="container">
-<h1> Crear nueva prenda </h1>
+      <div class="card-panel white">
+        <div class='form-container'>
+          <form class="col s12">
+            <div class="form-group">
+              <h2 class='red-text text-lighten-1'> Nueva prenda </h2>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+                </div>
+              </div>
 
-<a [routerLink]="['/articles']"> Volver a la lista </a>
-<div class='form-container'>
-<form  class="col s12">
-  <div class="form-group">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" [(ngModel)]="newArticle.name" name="name" required />
+                  <label> Nombre* </label>
+                </div>
+              </div>
 
-    <label> Nombre* </label>
-    <input type="text" [(ngModel)]="newArticle.name" name="name" required />
+              <div class="row">
+                <select materialize='material_select' class="form-control col s6" id="season" [(ngModel)]="newArticle.season" name="season">
+                  <option value="" disabled selected>Elige temporada</option>
+                  <option *ngFor="let s of season" [value]="s">{{s}}</option>
+                </select>
+                <select materialize='material_select' class="form-control col s6" id="color" [(ngModel)]="newArticle.colorsRange" name="color">
+                  <option value="" disabled selected>Elige gama de color</option>
+                  <option *ngFor="let c of color" [value]="c">{{c}}</option>
+                </select>
+              </div>
 
-    <label> Imagen </label>
-    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+              <div class="row">
+                <select materialize='material_select' class="form-control col s6" id="style" [(ngModel)]="newArticle.style" name="style">
+                  <option value="" disabled selected>Elige estilo </option>
+                  <option *ngFor="let s of style" [value]="s">{{s}}</option>
+                </select>
+                <select materialize='material_select' class="form-control col s6" id="category" [(ngModel)]="newArticle.category" name="category">
+                  <option value="" disabled selected>Elige tipo de prenda </option>
+                  <option *ngFor="let c of category" [value]="c">{{c}}</option>
+                </select>
+              </div>
 
+              <div class="input-field col s12">
+                <label> Notas </label>
+                <input type="text" [(ngModel)]="newArticle.notes" name="notes" />
+              </div>
 
-    <label for="season">Temporada</label>
-    <select materialize='material_select' class="form-control"  id="season" [(ngModel)]="newArticle.season" name="season">
-      <option *ngFor="let s of season" [value]="s">{{s}}</option>
-    </select>
+              <button (click)="submit()" class="waves-effect waves-light btn blue-grey btn-margin">
+                guardar
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <p> {{ feedback }} </p>
+      </div>
 
-     <label for="color">Gama de color </label>
-    <select materialize='material_select' class="form-control"  id="color" [(ngModel)]="newArticle.colorsRange" name="color">
-      <option *ngFor="let c of color" [value]="c">{{c}}</option>
-    </select>
-
-    <label for="style"> Estilo | Ocasión </label>
-    <select materialize='material_select' class="form-control"  id="style" [(ngModel)]="newArticle.style" name="style">
-      <option *ngFor="let s of style" [value]="s">{{s}}</option>
-    </select>
-
-    <label for="category"> Tipo prenda </label>
-    <select materialize='material_select' class="form-control"  id="category" [(ngModel)]="newArticle.category" name="category">
-      <option *ngFor="let c of category" [value]="c">{{c}}</option>
-    </select>
-
-    <label> Notas </label>
-    <input type="text" [(ngModel)]="newArticle.notes" name="notes"  />
-
-    <button (click)="submit()"> Crear </button>
-
-  </div>
-</form>
-</div>
-<p> {{ feedback }} </p>
-</div>
+    </div>
