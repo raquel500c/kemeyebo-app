@@ -21,7 +21,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".ng-touched {\n  border-color: blue;\n}\n\n.ng-touched.ng-invalid {\n  border-color: red;\n}\n\n.ng-touched.ng-valid {\n  border-color: green;\n}\n", ""]);
+exports.push([module.i, ".ng-touched {\n  border-color: blue;\n}\n\n.ng-touched.ng-invalid {\n  border-color: red;\n}\n\n.ng-touched.ng-valid {\n  border-color: green;\n}\n\n.form-container{\n  background-color: white ;\n}\n\n.card-panel{\n  margin-top:50px;\n}\n", ""]);
 
 // exports
 
@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/add-article/add-article.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1> Crear nueva prenda </h1>\n\n<a [routerLink]=\"['/articles']\"> Volver a la lista </a>\n\n<form>\n  <div class=\"form-group\">\n\n    <label> Nombre* </label>\n    <input type=\"text\" [(ngModel)]=\"newArticle.name\" name=\"name\" required />\n\n    <label> Imagen </label>\n    <input type=\"file\" name=\"file\" ng2FileSelect [uploader]=\"uploader\" />\n\n\n    <label for=\"season\">Temporada</label>\n    <!-- <input type=\"text\" [(ngModel)]=\"newArticle.season\" name=\"season\"  /> -->\n    <select class=\"form-control\"  id=\"season\" [(ngModel)]=\"newArticle.season\" name=\"season\">\n      <option *ngFor=\"let s of season\" [value]=\"s\">{{s}}</option>\n    </select>\n\n     <!-- <label> Gama de color </label> -->\n    <!-- <input type=\"text\" [(ngModel)]=\"newArticle.colorsRange\" name=\"colorsRange\"  /> -->\n    <!-- <select class=\"form-control\"  id=\"power\" [(ngModel)]=\"newArticle.season\" name=\"season\"> -->\n      <!-- <option *ngFor=\"let s of season\" [value]=\"s\">{{s}}</option> -->\n    <!-- </select> -->\n\n    <label> Estilo | Ocasión </label>\n    <!-- <input type=\"text\" [(ngModel)]=\"newArticle.style\" name=\"style\"  /> -->\n\n\n    <label> Tipo prenda* </label>\n    <!-- <input type=\"text\" [(ngModel)]=\"newArticle.category\" name=\"category\" required/> -->\n\n\n    <label> Notas </label>\n    <!-- <input type=\"text\" [(ngModel)]=\"newArticle.notes\" name=\"notes\"  /> -->\n\n\n\n    <button (click)=\"submit()\"> Crear </button>\n  </div>\n</form>\n\n<p> {{ feedback }} </p>\n"
+module.exports = "<div class=\"container\">\n      <div class=\"card-panel white\">\n        <div class='form-container'>\n          <form class=\"col s12\">\n            <div class=\"form-group\">\n              <h2 class='red-text text-lighten-1'> Nueva prenda </h2>\n              <div class=\"row\">\n                <div class=\"input-field col s12\">\n                  <input type=\"file\" name=\"file\" ng2FileSelect [uploader]=\"uploader\" />\n                </div>\n              </div>\n\n              <div class=\"row\">\n                <div class=\"input-field col s12\">\n                  <input type=\"text\" [(ngModel)]=\"newArticle.name\" name=\"name\" required />\n                  <label> Nombre* </label>\n                </div>\n              </div>\n\n              <div class=\"row\">\n                <select materialize='material_select' class=\"form-control col s6\" id=\"season\" [(ngModel)]=\"newArticle.season\" name=\"season\">\n                  <option value=\"\" disabled selected>Elige temporada</option>\n                  <option *ngFor=\"let s of season\" [value]=\"s\">{{s}}</option>\n                </select>\n                <select materialize='material_select' class=\"form-control col s6\" id=\"color\" [(ngModel)]=\"newArticle.colorsRange\" name=\"color\">\n                  <option value=\"\" disabled selected>Elige gama de color</option>\n                  <option *ngFor=\"let c of color\" [value]=\"c\">{{c}}</option>\n                </select>\n              </div>\n\n              <div class=\"row\">\n                <select materialize='material_select' class=\"form-control col s6\" id=\"style\" [(ngModel)]=\"newArticle.style\" name=\"style\">\n                  <option value=\"\" disabled selected>Elige estilo </option>\n                  <option *ngFor=\"let s of style\" [value]=\"s\">{{s}}</option>\n                </select>\n                <select materialize='material_select' class=\"form-control col s6\" id=\"category\" [(ngModel)]=\"newArticle.category\" name=\"category\">\n                  <option value=\"\" disabled selected>Elige tipo de prenda </option>\n                  <option *ngFor=\"let c of category\" [value]=\"c\">{{c}}</option>\n                </select>\n              </div>\n\n              <div class=\"input-field col s12\">\n                <label> Notas </label>\n                <input type=\"text\" [(ngModel)]=\"newArticle.notes\" name=\"notes\" />\n              </div>\n\n              <button (click)=\"submit()\" class=\"waves-effect waves-light btn blue-grey btn-margin\">\n                guardar\n                <i class=\"material-icons right\">send</i>\n              </button>\n            </div>\n          </form>\n        </div>\n        <p> {{ feedback }} </p>\n      </div>\n\n    </div>\n"
 
 /***/ }),
 
@@ -45,6 +45,8 @@ module.exports = "<h1> Crear nueva prenda </h1>\n\n<a [routerLink]=\"['/articles
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_ng2_file_upload__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddArticleComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -57,14 +59,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 var AddArticleComponent = (function () {
-    function AddArticleComponent() {
+    function AddArticleComponent(auth, router) {
+        var _this = this;
+        this.auth = auth;
+        this.router = router;
         this.season = ['primavera', 'verano', 'otoño', 'invierno', 'entre tiempo', 'todas'];
-        this.colorsRange = ['blanco', 'crema', 'gris', 'negro', 'azul', 'rojo', 'amarillo'];
+        this.color = ['blanco', 'crema', 'gris', 'negro', 'azul', 'rojo', 'amarillo',
+            'verde', 'morado', 'naranja', 'rosa', 'plateado', 'dorado', 'marrón', 'multicolor'];
+        this.style = ['informal', 'casual', 'trabajo', 'deporte', 'fiesta', 'formal', 'formal-playa', 'etiqueta', 'varios'];
+        this.category = ['parte de arriba', 'parte de abajo', 'cuerpo entero', 'calzado', 'accesorio', 'ropa interior', 'otra'];
         this.uploader = new __WEBPACK_IMPORTED_MODULE_1_ng2_file_upload__["FileUploader"]({
             url: 'http://localhost:3000/api/articles/'
         });
         this.newArticle = {
+            owner: '',
             name: '',
             season: '',
             colorsRange: '',
@@ -72,8 +83,12 @@ var AddArticleComponent = (function () {
             category: '',
             notes: ''
         };
+        this.user = this.auth.getUser();
+        this.auth.getLoginEventEmitter()
+            .subscribe(function (user) { return _this.user = user; });
     }
     AddArticleComponent.prototype.ngOnInit = function () {
+        //$('select').material_select();
         // this.uploader.onSuccessItem = (item, response) => {
         //   this.feedback = JSON.parse(response).message;
         // }
@@ -84,7 +99,10 @@ var AddArticleComponent = (function () {
     };
     AddArticleComponent.prototype.submit = function () {
         var _this = this;
+        console.log(this.newArticle);
+        this.newArticle.owner = this.user._id;
         this.uploader.onBuildItemForm = function (item, form) {
+            form.append('owner', _this.newArticle.owner);
             form.append('name', _this.newArticle.name);
             form.append('season', _this.newArticle.season);
             form.append('colorsRange', _this.newArticle.colorsRange);
@@ -93,8 +111,7 @@ var AddArticleComponent = (function () {
             form.append('notes', _this.newArticle.notes);
         };
         this.uploader.uploadAll();
-        this.uploader.onCompleteItem = function () { return console.log("hecho"); };
-        // this.router.navigate(['/articles/']);
+        this.uploader.onCompleteItem = function () { return _this.router.navigate(['/articles']); };
     };
     return AddArticleComponent;
 }());
@@ -104,9 +121,10 @@ AddArticleComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/add-article/add-article.component.html"),
         styles: [__webpack_require__("../../../../../src/app/add-article/add-article.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], AddArticleComponent);
 
+var _a, _b;
 //# sourceMappingURL=add-article.component.js.map
 
 /***/ }),
@@ -119,7 +137,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".brand-logo, p {\n  margin-left: 20px\n}\n", ""]);
 
 // exports
 
@@ -132,7 +150,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <ul>\n  <li><a [routerLink]=\"['/']\">Home</a></li>\n  <li><a [routerLink]=\"['/user']\">User Profile</a></li>\n  <li><a [routerLink]=\"['/login']\">Login</a></li>\n  <li><a [routerLink]=\"['/signup']\">Sign Up</a></li>\n  </ul>\n  <router-outlet></router-outlet>\n</div>\n"
+module.exports = "<nav>\n  <div class=\" nav-wrapper text-lighten-4 \">\n    <a [routerLink]=\"['/']\" class=\"brand-logo\"><img id =\"logo\"src=\"\" alt=\"\">KeMeYeBo</a>\n    <a href=\"#\"  data-activates=\"mobile-demo\" class=\"button-collapse\"><i class=\"material-icons\">menu</i></a>\n    <ul *ngIf=\"!user\" class=\"right hide-on-med-and-down\">\n      <li><a [routerLink]=\"['/']\">Home</a></li>\n      <li><a [routerLink]=\"['/login']\"><i class=\"material-icons left\">perm_identity</i>Log-In</a></li>\n      <li><a [routerLink]=\"['/signup']\"><i class=\"material-icons left\">input</i>Sign-Up</a></li>\n    </ul>\n    <ul *ngIf=\"user\" class=\"right hide-on-med-and-down\">\n      <li><a [routerLink]=\"['/articles']\">Prendas</a></li>\n      <li><a [routerLink]=\"['/']\"><i class=\"material-icons left\">person</i>{{ user.username }} </a></li>\n      <li><a (click)=\"auth.logout().subscribe()\"><i class=\"material-icons left\">exit_to_app</i>Logout</a></li>\n    </ul>\n    <ul class=\"side-nav\" id=\"mobile-demo\">\n      <ul *ngIf=\"!user\">\n        <li><a [routerLink]=\"['/']\">Home</a></li>\n        <li><a [routerLink]=\"['/login']\"><i class=\"material-icons left\">perm_identity</i>Log-In</a></li>\n        <li><a [routerLink]=\"['/signup']\"><i class=\"material-icons left\">input</i>Sign-Up</a></li>\n      </ul>\n      <ul *ngIf=\"user\">\n        <li><a [routerLink]=\"['/articles']\">Prendas</a></li>\n        <li><a [routerLink]=\"['/']\"><i class=\"material-icons left\">person</i>{{ user.username }} </a></li>\n        <li><a (click)=\"auth.logout().subscribe()\"><i class=\"material-icons left\">exit_to_app</i>Logout</a></li>\n      </ul>\n    </ul>\n  </div>\n</nav>\n\n  <router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -142,6 +160,7 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -154,12 +173,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var AppComponent = (function () {
-    function AppComponent(auth) {
+    function AppComponent(auth, router) {
         this.auth = auth;
+        this.router = router;
         this.title = 'Kemeyebo';
     }
-    ;
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.auth.isLoggedIn().subscribe(function (user) { return _this.successCb(user); });
+        this.auth.getLoginEventEmitter().subscribe(function (user) { return _this.successCb(user); });
+        $(".button-collapse").sideNav();
+    };
+    AppComponent.prototype.errorCb = function (err) {
+        this.error = err;
+        this.user = null;
+    };
+    AppComponent.prototype.successCb = function (user) {
+        this.user = user;
+        this.error = null;
+        this.router.navigate(['/']);
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -168,10 +203,10 @@ AppComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], AppComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -199,6 +234,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__add_article_add_article_component__ = __webpack_require__("../../../../../src/app/add-article/add-article.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_ng2_file_upload__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_angular2_materialize__ = __webpack_require__("../../../../angular2-materialize/dist/index.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -206,6 +242,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -246,7 +283,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_9__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_12__routes__["a" /* routes */])
+            __WEBPACK_IMPORTED_MODULE_9__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_12__routes__["a" /* routes */]),
+            __WEBPACK_IMPORTED_MODULE_18_angular2_materialize__["a" /* MaterializeModule */]
         ],
         providers: [__WEBPACK_IMPORTED_MODULE_6__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_10__services_isLoggedIn_canactivate_service__["a" /* IsLoggedInService */], __WEBPACK_IMPORTED_MODULE_11__services_articles_service__["a" /* ArticlesService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
@@ -354,7 +392,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".img-article {\n  height: 300px;\n}\n", ""]);
+exports.push([module.i, "/*.card-image{\n  max-height: 400px;\n}*/\n\nh2 {\n  display: inline;\n}\n\n/*.img-article{\n  height: 300px;\n\n}\n\n.card-title{\n  min-height: 70px;\n}*/\n\n.title{\n  margin-top: 20px\n}\n", ""]);
 
 // exports
 
@@ -367,7 +405,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/articles-list/articles-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='container'>\n  <h2>Lista de prendas</h2>\n  <a [routerLink]=\"['/add']\">Añadir nueva prenda</a>\n  <hr />\n  <div *ngFor=\"let article of articles\" class=\"article-card\">\n    <h5>{{article.name | uppercase }}</h5>\n\n    <img [src]=\"article.image\" class=\"img-article\">\n\n    <a [routerLink]=\"['/article', article._id]\">Detalle prenda</a>\n  </div>\n</div>\n"
+module.exports = "<div class='container'>\n  <div class='row title'>\n    <h2 class='white-text'>Mis prendas</h2>\n    <a [routerLink]=\"['/add']\" class=\"btn-floating btn-large waves-effect waves-light white right\"><i class=\"material-icons blue-grey-text text-accent-3 right\">add</i></a>\n  </div>\n  <div class=\"row\">\n    <div class=\"materialize card large article-card col s6 m6 l4\" *ngFor=\"let article of articles\" >\n        <div class=\"card-image waves-effect waves-block waves-light\">\n          <img class=\"activator img-article\" [src]=\"article.image\">\n        </div>\n\n        <div class=\"card-content\">\n          <span class=\"card-title activator grey-text text-darken-4 \">{{article.name | uppercase }}<i class=\"material-icons right\">more_vert</i></span>\n        </div>\n\n        <div class=\"card-reveal\">\n          <span class=\"card-title grey-text text-darken-4\">{{article.name | uppercase }}<i class=\"material-icons right\">close</i></span>\n            <p>Temporada: {{article.season}}</p>\n            <p>Gama color: {{article.colorsRange}}</p>\n            <p>Ocasión: {{article.style}}</p>\n            <p> Tipo: {{article.category}}</p>\n            <p >Notas: {{article.notes}}</p>\n            <div class=\"card-action\">\n              <button  class=\"btn-floating btn-large waves-effect waves-light btn blue-grey left\"><i class=\"material-icons\">edit</i></button>\n              <button (click)=\"deleteArticle(article._id)\" class=\"btn-floating btn-large waves-effect waves-light red accent-3 right \"><i class=\"material-icons\">delete</i></button>\n            </div>\n        </div>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -377,6 +415,8 @@ module.exports = "<div class='container'>\n  <h2>Lista de prendas</h2>\n  <a [ro
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_articles_service__ = __webpack_require__("../../../../../src/app/services/articles.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ArticlesListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -389,13 +429,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 var ArticlesListComponent = (function () {
-    function ArticlesListComponent(articlesService) {
+    function ArticlesListComponent(auth, router, route, articlesService) {
+        this.auth = auth;
+        this.router = router;
+        this.route = route;
         this.articlesService = articlesService;
     }
     ArticlesListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.articlesService.getList().subscribe(function (result) { return _this.articles = result; });
+        this.user = this.auth.getUser();
+        this.articlesService.getList(this.user).subscribe(function (result) { return _this.successCb(result); });
+    };
+    ArticlesListComponent.prototype.errorCb = function (err) {
+        this.error = err;
+        this.user = null;
+    };
+    ArticlesListComponent.prototype.successCb = function (result) {
+        this.articles = result;
+        this.error = null;
+        console.log("EL USUARIO ES", this.user);
+        console.log("ESTOY LOGEADO");
+    };
+    ArticlesListComponent.prototype.deleteArticle = function (id) {
+        var _this = this;
+        if (window.confirm('¿Estás seguro?')) {
+            this.articlesService.remove(id)
+                .subscribe(function () {
+                _this.articlesService.getList(_this.user).subscribe(function (result) { return _this.articles = result; });
+            });
+        }
     };
     return ArticlesListComponent;
 }());
@@ -405,10 +470,10 @@ ArticlesListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/articles-list/articles-list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/articles-list/articles-list.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_articles_service__["a" /* ArticlesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_articles_service__["a" /* ArticlesService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__services_articles_service__["a" /* ArticlesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_articles_service__["a" /* ArticlesService */]) === "function" && _d || Object])
 ], ArticlesListComponent);
 
-var _a;
+var _a, _b, _c, _d;
 //# sourceMappingURL=articles-list.component.js.map
 
 /***/ }),
@@ -421,7 +486,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".header{\n  /*color: #ef5350*/\n  color:white;\n}\n", ""]);
 
 // exports
 
@@ -434,7 +499,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Welcome to {{title}}!</h1>\n"
+module.exports = "<div id=\"index-banner\" class=\"parallax-container\">\n  <div class=\"section no-pad-bot\">\n    <div class=\"container\">\n      <br/><br/><br />\n      <h1 class=\"header center  text-lighten-2\">¿Problemas con la maleta?</h1>\n      <div class=\"row center\">\n        <h5 class=\"header col s12 \">KeMeYeBo app organiza tu ropa</h5>\n      </div>\n      <div class=\"row center\">\n\n      </div>\n      <br><br>\n\n    </div>\n  </div>\n  <div class=\"parallax\"><img src=\"https://trello-attachments.s3.amazonaws.com/59d28f5f79626218b1a21b1d/59dd13defb8d297e549f44ba/01c61250fbcb65078d6bf586727886f1/como-meter-todo-en-una-maleta-de-mano.jpg\" alt=\"\"></div>\n</div>\n\n<div class=\"wrapper-white white\">\n  <div class=\"container \">\n    <div class=\"section\">\n\n      <!--   Icon Section   -->\n      <div class=\"row\">\n        <div class=\"col s12 m4\">\n          <div class=\"icon-block\">\n            <h2 class=\"center brown-text\"><i class=\"material-icons\">local_see</i></h2>\n            <h5 class=\"center\">¿Qué tengo?</h5>\n\n            <p class=\"light\">Hicimos la mayor parte del trabajo pesado para que usted pueda proporcionar un estilo por defecto que incorpora nuestros componentes personalizados. Además, hemos refinado animaciones y transiciones para proporcionar una experiencia más suave\n              para los desarrolladores.</p>\n          </div>\n        </div>\n\n        <div class=\"col s12 m4\">\n          <div class=\"icon-block\">\n            <h2 class=\"center brown-text\"><i class=\"material-icons\">group</i></h2>\n            <h5 class=\"center\">¿Qué me pongo?</h5>\n\n            <p class=\"light\">Al utilizar elementos y principios de diseño de materiales, pudimos crear un marco que incorpora componentes y animaciones que proporcionan más retroalimentación a los usuarios. Además, un solo sistema de respuesta subyacente en todas las\n              plataformas permite una experiencia de usuario más unificada.</p>\n          </div>\n        </div>\n\n        <div class=\"col s12 m4\">\n          <div class=\"icon-block\">\n            <h2 class=\"center brown-text\"><i class=\"material-icons\">card_travel</i></h2>\n            <h5 class=\"center\">¿Qué me llevo?</h5>\n\n            <p class=\"light\">Hemos proporcionado documentación detallada, así como ejemplos de código específicos para ayudar a los nuevos usuarios a empezar. También estamos siempre abiertos a la retroalimentación y podemos responder cualquier pregunta que un usuario\n              pueda tener sobre Materialise.</p>\n          </div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>\n\n\n<div class=\"parallax-container valign-wrapper\">\n  <div class=\"section no-pad-bot\">\n    <div class=\"container\">\n      <div class=\"row center\">\n        <h5 class=\"header col s12 light\">¿Te cuesta decidir qué ponerte?</h5>\n      </div>\n    </div>\n  </div>\n  <div class=\"parallax\"><img src=\"https://trello-attachments.s3.amazonaws.com/59dd13defb8d297e549f44ba/1200x900/cdcdbe72bcb4043a7ce1b8f51e0b8205/%C2%BFQu%C3%A9-me-pongo-hoy-Mejor-elige-tu-ropa-el-d%C3%ADa-anterior-SL1.jpg\" alt=\"Unsplashed background img 2\"></div>\n</div>\n\n<div class=\"wrapper-white white\">\n  <div class=\"container\">\n    <div class=\"section\">\n\n      <div class=\"row\">\n        <div class=\"col s12 center\">\n          <h3><i class=\"mdi-content-send brown-text\"></i></h3>\n          <h4>Contact Us</h4>\n          <p class=\"left-align light\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra\n            ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices\n            erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>\n        </div>\n      </div>\n\n    </div>\n  </div>\n</div>\n\n<div class=\"parallax-container valign-wrapper\">\n  <div class=\"section no-pad-bot\">\n    <div class=\"container\">\n      <div class=\"row center\">\n        <h5 class=\"header col s12 light\">¡Hacer la maleta ya no será un problema!</h5>\n      </div>\n    </div>\n  </div>\n  <div class=\"parallax\"><img src=\"https://trello-attachments.s3.amazonaws.com/59d28f5f79626218b1a21b1d/59dd13defb8d297e549f44ba/fcb67388e34ca3f22641ce973dd2f0e5/maletas.jpg\" alt=\"Unsplashed background img 3\"></div>\n</div>\n\n<footer class=\"page-footer red lighten-2\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col l6 s12\">\n        <h5 class=\"white-text\">Company Bio</h5>\n        <p class=\"grey-text text-lighten-4\">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>\n      </div>\n      <div class=\"col l3 s12\">\n        <h5 class=\"white-text\">Settings</h5>\n        <ul>\n          <li><a class=\"white-text\" href=\"#!\">Link 1</a></li>\n          <li><a class=\"white-text\" href=\"#!\">Link 2</a></li>\n          <li><a class=\"white-text\" href=\"#!\">Link 3</a></li>\n          <li><a class=\"white-text\" href=\"#!\">Link 4</a></li>\n        </ul>\n      </div>\n      <div class=\"col l3 s12\">\n        <h5 class=\"white-text\">Connect</h5>\n        <ul>\n          <li><a class=\"white-text\" href=\"#!\">Link 1</a></li>\n          <li><a class=\"white-text\" href=\"#!\">Link 2</a></li>\n          <li><a class=\"white-text\" href=\"#!\">Link 3</a></li>\n          <li><a class=\"white-text\" href=\"#!\">Link 4</a></li>\n        </ul>\n      </div>\n    </div>\n  </div>\n  <div class=\"footer-copyright\">\n    <div class=\"container\">\n      Made by <a class=\"brown-text text-lighten-3\" href=\"\">Raquel500c</a>\n      <div>Icons designed by <a class=\"brown-text text-lighten-3\" href=\"https://www.flaticon.es/autores/sarfraz-shoukat\" title=\"Sarfraz Shoukat\">Sarfraz Shoukat</a> from <a  class=\"brown-text text-lighten-3\" href=\"https://www.flaticon.es/\" title=\"Flaticon\">www.flaticon.com</a> with Licence <a class=\"brown-text text-lighten-3\" href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a></div>\n    </div>\n  </div>\n</footer>\n"
 
 /***/ }),
 
@@ -458,6 +523,7 @@ var HomeComponent = (function () {
     function HomeComponent() {
     }
     HomeComponent.prototype.ngOnInit = function () {
+        $('.parallax').parallax();
     };
     return HomeComponent;
 }());
@@ -482,7 +548,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".ng-touched {\n  border-color: blue;\n}\n\n.ng-touched.ng-invalid {\n  border-color: red;\n}\n\n.ng-touched.ng-valid {\n  border-color: green;\n}\n\n.form-container{\n  background-color: white ;\n}\n\n.card-panel{\n  margin-top:50px;\n}\n", ""]);
 
 // exports
 
@@ -495,7 +561,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/loginform/loginform.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form >\n  <h2> Login </h2>\n  <label> Username </label>\n  <input type=\"text\" [(ngModel)]=\"formInfo.username\" name=\"username\"/>\n  <br>\n  <label> Password </label>\n  <input type=\"password\" [(ngModel)]=\"formInfo.password\" name=\"password\"/>\n\n  <button (click)=\"login()\"> login </button>\n</form>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"card-panel white\">\n    <div class='form-container'>\n      <form class=\"col s12\">\n        <div class=\"form-group\">\n          <h2 class='red-text text-lighten-1'> Accede a tu cuenta! </h2>\n          <div class=\"row\">\n            <div class=\"input-field col s6\">\n              <label for=\"username\" data-error=\"wrong\" data-success=\"right\"> Username </label>\n              <input type=\"text\" [(ngModel)]=\"formInfo.username\" name=\"username\" class=\"validate\" required/>\n            </div>\n            <div class=\"input-field col s6\">\n              <label for=\"password\" data-error=\"wrong\" data-success=\"right\">Password</label>\n              <input type=\"password\" [(ngModel)]=\"formInfo.password\" name=\"password\" class=\"validate\" required/>\n            </div>\n          </div>\n            <button (click)=\"login()\" class=\"waves-effect waves-light btn blue-grey btn-margin \" type='submit'>\n              LOGIN\n              <i class=\"material-icons right\">send</i>\n            </button>\n          </div>\n      </form>\n    </div>\n    <p> {{ feedback }} </p>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -505,6 +571,7 @@ module.exports = "<form >\n  <h2> Login </h2>\n  <label> Username </label>\n  <i
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginformComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -517,9 +584,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var LoginformComponent = (function () {
-    function LoginformComponent(auth) {
+    function LoginformComponent(auth, router) {
         this.auth = auth;
+        this.router = router;
         this.formInfo = {
             username: "",
             password: ""
@@ -528,12 +597,13 @@ var LoginformComponent = (function () {
     LoginformComponent.prototype.ngOnInit = function () {
     };
     LoginformComponent.prototype.login = function () {
+        var _this = this;
         var _a = this.formInfo, username = _a.username, password = _a.password;
         if (username != "" && password != "") {
             console.log("Login with " + username + " " + password);
             this.auth.login(username, password)
                 .map(function (user) { return console.log(user); })
-                .subscribe();
+                .subscribe(function (user) { return _this.router.navigate(['/articles']); });
         }
         else {
             console.log("You must set a username and a password");
@@ -547,10 +617,10 @@ LoginformComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/loginform/loginform.component.html"),
         styles: [__webpack_require__("../../../../../src/app/loginform/loginform.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], LoginformComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=loginform.component.js.map
 
 /***/ }),
@@ -613,13 +683,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var BASE_URL = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].BASEURL + "/api";
+var BASE_URL = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].BASEURL;
 var ArticlesService = (function () {
     function ArticlesService(http) {
         this.http = http;
     }
-    ArticlesService.prototype.getList = function () {
-        return this.http.get(BASE_URL + "/articles")
+    ArticlesService.prototype.getList = function (id) {
+        this.id = id._id;
+        console.log("LOCO THIS", this.id);
+        //return this.http.get(`${BASE_URL}/api/articles`, this.id)
+        // getList(id_user) {
+        return this.http.get(BASE_URL + "/api/articles/unico/" + this.id)
             .map(function (res) { return res.json(); })
             .map(function (list) {
             return list.map(function (e) {
@@ -633,19 +707,19 @@ var ArticlesService = (function () {
         });
     };
     ArticlesService.prototype.newArticle = function () {
-        return this.http.post(BASE_URL + "/articles", this.options)
+        return this.http.post(BASE_URL + "/api/articles", this.options)
             .map(function (res) { return res.json(); });
     };
     ArticlesService.prototype.get = function (id) {
-        return this.http.get(BASE_URL + "/articles/" + id)
+        return this.http.get(BASE_URL + "/api/articles/" + id)
             .map(function (res) { return res.json(); });
     };
     ArticlesService.prototype.edit = function (article) {
-        return this.http.put(BASE_URL + "/articles/" + article.id, article)
+        return this.http.put(BASE_URL + "/api/articles/" + article.id, article)
             .map(function (res) { return res.json(); });
     };
     ArticlesService.prototype.remove = function (id) {
-        return this.http.delete(BASE_URL + "/articles/" + id)
+        return this.http.delete(BASE_URL + "/api/articles/" + id)
             .map(function (res) { return res.json(); });
     };
     return ArticlesService;
@@ -800,7 +874,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".ng-touched {\n  border-color: blue;\n}\n\n.ng-touched.ng-invalid {\n  border-color: red;\n}\n\n.ng-touched.ng-valid {\n  border-color: green;\n}\n\n.form-container{\n  background-color: white ;\n}\n\n.card-panel{\n  margin-top:50px;\n}\n", ""]);
 
 // exports
 
@@ -813,7 +887,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/signupform/signupform.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form >\n  <h2> Signup </h2>\n  <label> Username </label>\n  <input type=\"text\" [(ngModel)]=\"formInfo.username\" name=\"username\"/>\n  <br>\n  <label> Password </label>\n  <input type=\"password\" [(ngModel)]=\"formInfo.password\" name=\"password\"/>\n\n  <button (click)=\"signup()\"> signup </button>\n</form>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"card-panel white\">\n    <div class='form-container'>\n      <form class=\"col s12\">\n        <div class=\"form-group\">\n    <!-- <h2> Signup </h2>\n      <div class=\"input-field col s6\">\n    <label for=\"username\" data-error=\"wrong\" data-success=\"right\"> Username </label>\n    <input type=\"text\" [(ngModel)]=\"formInfo.username\" name=\"username\" class=\"validate\" required/>\n  </div>\n  <div class=\"input-field col s6\">\n    <label for=\"password\" data-error=\"wrong\" data-success=\"right\">Password</label>\n    <input type=\"password\" [(ngModel)]=\"formInfo.password\" name=\"password\" class=\"validate\" required/>\n  </div>\n    <button (click)=\"signup()\" class=\"waves-effect waves-light btn blue-grey btn-margin\" type='submit'>\n      SIGNUP\n      <i class=\"material-icons right\">send</i>\n    </button>\n  </form>\n</div> -->\n<h2 class='red-text text-lighten-1'> Regístrate!</h2>\n<div class=\"row\">\n  <div class=\"input-field col s6\">\n    <label for=\"username\" data-error=\"wrong\" data-success=\"right\"> Username </label>\n    <input type=\"text\" [(ngModel)]=\"formInfo.username\" name=\"username\" class=\"validate\" required/>\n  </div>\n  <div class=\"input-field col s6\">\n    <label for=\"password\" data-error=\"wrong\" data-success=\"right\">Password</label>\n    <input type=\"password\" [(ngModel)]=\"formInfo.password\" name=\"password\" class=\"validate\" required/>\n  </div>\n</div>\n  <button (click)=\"signup()\" class=\"waves-effect waves-light btn blue-grey btn-margin\" type='submit'>\n    SIGNUP\n    <i class=\"material-icons right\">send</i>\n  </button>\n</div>\n</form>\n</div>\n<p> {{ feedback }} </p>\n</div>\n\n</div>\n"
 
 /***/ }),
 
@@ -823,6 +897,7 @@ module.exports = "<form >\n  <h2> Signup </h2>\n  <label> Username </label>\n  <
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignupformComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -835,9 +910,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var SignupformComponent = (function () {
-    function SignupformComponent(auth) {
+    function SignupformComponent(auth, router) {
         this.auth = auth;
+        this.router = router;
         this.formInfo = {
             username: "",
             password: ""
@@ -846,12 +923,13 @@ var SignupformComponent = (function () {
     SignupformComponent.prototype.ngOnInit = function () {
     };
     SignupformComponent.prototype.signup = function () {
+        var _this = this;
         var _a = this.formInfo, username = _a.username, password = _a.password;
         if (username != "" && password != "") {
             console.log("Signup with " + username + " " + password);
             this.auth.signup(username, password)
                 .map(function (user) { return console.log(user); })
-                .subscribe();
+                .subscribe(function (user) { return _this.router.navigate(['/']); });
         }
         else {
             console.log("You must set a username and a password");
@@ -865,10 +943,10 @@ SignupformComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/signupform/signupform.component.html"),
         styles: [__webpack_require__("../../../../../src/app/signupform/signupform.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object])
 ], SignupformComponent);
 
-var _a;
+var _a, _b;
 //# sourceMappingURL=signupform.component.js.map
 
 /***/ }),
@@ -894,7 +972,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/userprofile/userprofile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"!user\">\n  <h2>NO USER LOGGED IN</h2>\n</div>\n\n<div *ngIf=\"user\">\n\n\n  <li><a [routerLink]=\"['/']\">Home</a></li>\n\n  <li><a [routerLink]=\"['/articles']\">Prendas</a></li>\n\n  <h2> You are now logged in as {{ user.username }}!! </h2>\n  <p> Here's the user object </p>\n  <pre> {{ user | json }} </pre>\n\n\n\n  <button (click)=\"auth.logout().subscribe()\"> logout </button>\n</div>\n"
+module.exports = "<div *ngIf=\"!user\">\n  <h2>NO USER LOGGED IN</h2>\n</div>\n\n<div *ngIf=\"user\">\n  <h2> {{ user.username }} </h2>\n  <button (click)=\"auth.logout().subscribe()\"> logout </button>\n</div>\n"
 
 /***/ }),
 
@@ -920,6 +998,7 @@ var UserprofileComponent = (function () {
     function UserprofileComponent(auth) {
         var _this = this;
         this.auth = auth;
+        this.title = 'Kemeyebo';
         this.user = this.auth.getUser();
         this.auth.getLoginEventEmitter()
             .subscribe(function (user) { return _this.user = user; });
@@ -947,16 +1026,16 @@ var _a;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
-//LOCAL-->
-// export const environment = {
-//   production: false,
-//   BASEURL: 'http://localhost:3000'
-// };
-//DEPLOY-->
+// //DEPLOY-->
 var environment = {
-    production: true,
-    BASEURL: ''
+    production: false,
+    BASEURL: 'http://localhost:3000'
 };
+// LOCAL-->
+// export const environment = {
+//   production: true,
+//   BASEURL: ''
+// };
 //# sourceMappingURL=environment.js.map
 
 /***/ }),
@@ -982,7 +1061,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("../../../../../src/main.ts");
@@ -990,5 +1069,5 @@ module.exports = __webpack_require__("../../../../../src/main.ts");
 
 /***/ })
 
-},[0]);
+},[1]);
 //# sourceMappingURL=main.bundle.js.map
