@@ -17,8 +17,6 @@ export class ArticlesService {
   getList(id) {
     this.id = id._id;
     console.log("LOCO THIS", this.id)
-    //return this.http.get(`${BASE_URL}/api/articles`, this.id)
-  // getList(id_user) {
     return this.http.get(`${BASE_URL}/api/articles/unico/${this.id}`)
       .map((res) => res.json())
       .map( list => {
