@@ -11,7 +11,7 @@ const salt = bcrypt.genSaltSync(bcryptSalt)
 const hashPass = bcrypt.hashSync(password, salt)
 
 mongoose.Promise = global.Promise
-mongoose.connect(process.env.DB_URL)
+mongoose.connect("mongodb://key:key@ds113435.mlab.com:13435/kemeyebo")
   .then(() => console.log('Connected to DB'))
   .catch(err => console.log(err))
 
