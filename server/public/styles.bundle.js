@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "body {\n  background-image: url('https://i.pinimg.com/736x/f6/bf/8c/f6bf8c9666c219e5b8310df271c01549--cavities-vintage-photography.jpg');\n  background-size: 100% 100%;\n}\n", ""]);
+exports.push([module.i, "body {\n  background-image: url('https://i.pinimg.com/736x/f6/bf/8c/f6bf8c9666c219e5b8310df271c01549--cavities-vintage-photography.jpg');\n  background-size: cover;\n  background-repeat: no-repeat;\n}\n", ""]);
 
 // exports
 
