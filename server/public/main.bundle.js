@@ -1024,12 +1024,6 @@ var _a;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
-// // LOCAL-->
-// export const environment = {
-//   production: false,
-//   BASEURL: 'http://localhost:3000'
-// };
-//DEPLOY-->
 var environment = {
     production: true,
     BASEURL: ''
