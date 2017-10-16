@@ -47,6 +47,7 @@ module.exports = "<div class=\"container\">\n      <div class=\"card-panel white
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_ng2_file_upload__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("../../../../../src/environments/environment.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddArticleComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -61,6 +62,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+var BASE_URL = __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].BASEURL;
 var AddArticleComponent = (function () {
     function AddArticleComponent(auth, router) {
         var _this = this;
@@ -72,7 +75,8 @@ var AddArticleComponent = (function () {
         this.style = ['informal', 'casual', 'trabajo', 'deporte', 'fiesta', 'formal', 'formal-playa', 'etiqueta', 'varios'];
         this.category = ['parte de arriba', 'parte de abajo', 'cuerpo entero', 'calzado', 'accesorio', 'ropa interior', 'otra'];
         this.uploader = new __WEBPACK_IMPORTED_MODULE_1_ng2_file_upload__["FileUploader"]({
-            url: 'http://localhost:3000/api/articles/'
+            //  url: 'http://localhost:3000/api/articles/'
+            url: BASE_URL + "/api/articles"
         });
         this.newArticle = {
             owner: '',
