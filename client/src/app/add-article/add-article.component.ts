@@ -3,6 +3,8 @@ import { FileUploader } from "ng2-file-upload";
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable'
 import { AuthService } from '../services/auth.service';
+import { environment } from '../../environments/environment';
+const BASE_URL: string = environment.BASEURL ;
 
 declare const $: any;
 
@@ -23,7 +25,8 @@ export class AddArticleComponent implements OnInit {
 
 
   uploader: FileUploader = new FileUploader({
-    url: 'http://localhost:3000/api/articles/'
+  //  url: 'http://localhost:3000/api/articles/'
+  url: `${BASE_URL}/api/articles`
   });
 
   newArticle = {
