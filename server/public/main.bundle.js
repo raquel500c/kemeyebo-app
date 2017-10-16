@@ -21,7 +21,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".ng-touched {\n  border-color: blue;\n}\n\n.ng-touched.ng-invalid {\n  border-color: red;\n}\n\n.ng-touched.ng-valid {\n  border-color: green;\n}\n\n.form-container{\n  background-color: white ;\n}\n\n.card-panel{\n  margin-top:50px;\n}\n", ""]);
+exports.push([module.i, ".ng-touched {\n  border-color: blue;\n}\n\n.ng-touched.ng-invalid {\n  border-color: red;\n}\n\n.ng-touched.ng-valid {\n  border-color: green;\n}\n\n.form-container {\n  background-color: white;\n}\n\n.card-panel {\n  margin-top: 50px;\n}\n", ""]);
 
 // exports
 
@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/add-article/add-article.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n      <div class=\"card-panel white\">\n        <div class='form-container'>\n          <form class=\"col s12\">\n            <div class=\"form-group\">\n              <h2 class='red-text text-lighten-1'> Nueva prenda </h2>\n              <div class=\"row\">\n                <div class=\"input-field col s12\">\n                  <input type=\"file\" name=\"file\" ng2FileSelect [uploader]=\"uploader\" />\n                </div>\n              </div>\n\n              <div class=\"row\">\n                <div class=\"input-field col s12\">\n                  <input type=\"text\" [(ngModel)]=\"newArticle.name\" name=\"name\" required />\n                  <label> Nombre* </label>\n                </div>\n              </div>\n\n              <div class=\"row\">\n                <select materialize='material_select' class=\"form-control col s6\" id=\"season\" [(ngModel)]=\"newArticle.season\" name=\"season\">\n                  <option value=\"\" disabled selected>Elige temporada</option>\n                  <option *ngFor=\"let s of season\" [value]=\"s\">{{s}}</option>\n                </select>\n                <select materialize='material_select' class=\"form-control col s6\" id=\"color\" [(ngModel)]=\"newArticle.colorsRange\" name=\"color\">\n                  <option value=\"\" disabled selected>Elige gama de color</option>\n                  <option *ngFor=\"let c of color\" [value]=\"c\">{{c}}</option>\n                </select>\n              </div>\n\n              <div class=\"row\">\n                <select materialize='material_select' class=\"form-control col s6\" id=\"style\" [(ngModel)]=\"newArticle.style\" name=\"style\">\n                  <option value=\"\" disabled selected>Elige estilo </option>\n                  <option *ngFor=\"let s of style\" [value]=\"s\">{{s}}</option>\n                </select>\n                <select materialize='material_select' class=\"form-control col s6\" id=\"category\" [(ngModel)]=\"newArticle.category\" name=\"category\">\n                  <option value=\"\" disabled selected>Elige tipo de prenda </option>\n                  <option *ngFor=\"let c of category\" [value]=\"c\">{{c}}</option>\n                </select>\n              </div>\n\n              <div class=\"input-field col s12\">\n                <label> Notas </label>\n                <input type=\"text\" [(ngModel)]=\"newArticle.notes\" name=\"notes\" />\n              </div>\n\n              <button (click)=\"submit()\" class=\"waves-effect waves-light btn blue-grey btn-margin\">\n                guardar\n                <i class=\"material-icons right\">send</i>\n              </button>\n            </div>\n          </form>\n        </div>\n        <p> {{ feedback }} </p>\n      </div>\n\n    </div>\n"
+module.exports = "<div class=\"container\">\n      <div class=\"card-panel white\">\n        <div class='form-container'>\n          <form class=\"col s12\">\n            <div class=\"form-group\">\n              <h2 class='red-text text-lighten-1'> Nueva prenda </h2>\n              <div class=\"row\">\n                <div class=\"input-field col s12\">\n                  <input type=\"file\" name=\"file\" ng2FileSelect [uploader]=\"uploader\" />\n                </div>\n              </div>\n\n              <div class=\"row\">\n                <div class=\"input-field col s12\">\n                  <input type=\"text\" [(ngModel)]=\"newArticle.name\" name=\"name\" required />\n                  <label> Nombre* </label>\n                </div>\n              </div>\n\n              <div class=\"row\">\n                <select materialize='material_select' class=\"form-control col s6\" id=\"season\" [(ngModel)]=\"newArticle.season\" name=\"season\">\n                  <option value=\"\" disabled selected>Elige temporada</option>\n                  <option *ngFor=\"let s of season\" [value]=\"s\">{{s}}</option>\n                </select>\n                <select materialize='material_select' class=\"form-control col s6\" id=\"color\" [(ngModel)]=\"newArticle.colorsRange\" name=\"color\">\n                  <option value=\"\" disabled selected>Elige gama de color</option>\n                  <option *ngFor=\"let c of color\" [value]=\"c\">{{c}}</option>\n                </select>\n              </div>\n\n              <div class=\"row\">\n                <select materialize='material_select' class=\"form-control col s6\" id=\"style\" [(ngModel)]=\"newArticle.style\" name=\"style\">\n                  <option value=\"\" disabled selected>Elige estilo </option>\n                  <option *ngFor=\"let s of style\" [value]=\"s\">{{s}}</option>\n                </select>\n                <select materialize='material_select' class=\"form-control col s6\" id=\"category\" [(ngModel)]=\"newArticle.category\" name=\"category\">\n                  <option value=\"\" disabled selected>Elige tipo de prenda </option>\n                  <option *ngFor=\"let c of category\" [value]=\"c\">{{c}}</option>\n                </select>\n              </div>\n\n              <div class=\"input-field col s12\">\n                <label> Notas </label>\n                <input type=\"text\" [(ngModel)]=\"newArticle.notes\" name=\"notes\" />\n              </div>\n\n              <button (click)=\"submit()\" class=\"waves-effect waves-light btn blue-grey btn-margin\">\n                guardar\n                <i class=\"material-icons right\">send</i>\n              </button>\n            </div>\n          </form>\n        </div>\n      </div>\n\n    </div>\n"
 
 /***/ }),
 
@@ -90,15 +90,7 @@ var AddArticleComponent = (function () {
         this.auth.getLoginEventEmitter()
             .subscribe(function (user) { return _this.user = user; });
     }
-    AddArticleComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.uploader.onSuccessItem = function (item, response) {
-            _this.feedback = JSON.parse(response).message;
-        };
-        this.uploader.onErrorItem = function (item, response, status, headers) {
-            _this.feedback = JSON.parse(response).message;
-        };
-    };
+    AddArticleComponent.prototype.ngOnInit = function () { };
     AddArticleComponent.prototype.submit = function () {
         var _this = this;
         console.log(this.newArticle);
@@ -394,7 +386,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/*.card-image{\n  max-height: 400px;\n}*/\n\nh2 {\n  display: inline;\n}\n\n/*.img-article{\n  height: 300px;\n\n}\n\n.card-title{\n  min-height: 70px;\n}*/\n\n.title{\n  margin-top: 20px\n}\n", ""]);
+exports.push([module.i, "h2 {\n  display: inline;\n}\n\n.title {\n  margin-top: 20px\n}\n", ""]);
 
 // exports
 
@@ -488,7 +480,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".header{\n  /*color: #ef5350*/\n  color:white;\n}\n", ""]);
+exports.push([module.i, ".header {\n  color: white;\n}\n", ""]);
 
 // exports
 
@@ -550,7 +542,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".ng-touched {\n  border-color: blue;\n}\n\n.ng-touched.ng-invalid {\n  border-color: red;\n}\n\n.ng-touched.ng-valid {\n  border-color: green;\n}\n\n.form-container{\n  background-color: white ;\n}\n\n.card-panel{\n  margin-top:50px;\n}\n", ""]);
+exports.push([module.i, ".ng-touched {\n  border-color: blue;\n}\n\n.ng-touched.ng-invalid {\n  border-color: red;\n}\n\n.ng-touched.ng-valid {\n  border-color: green;\n}\n\n.form-container {\n  background-color: white;\n}\n\n.card-panel {\n  margin-top: 50px;\n}\n", ""]);
 
 // exports
 
@@ -849,10 +841,7 @@ var IsLoggedInService = (function () {
     }
     IsLoggedInService.prototype.canActivate = function () {
         console.log("Checking can activate");
-        //return timeout(5).then(() => true);
-        //return this.auth.isLoggedIn().map(user => true)
         return this.auth.getUser() ? true : false;
-        //return false;
     };
     return IsLoggedInService;
 }());
@@ -874,7 +863,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".ng-touched {\n  border-color: blue;\n}\n\n.ng-touched.ng-invalid {\n  border-color: red;\n}\n\n.ng-touched.ng-valid {\n  border-color: green;\n}\n\n.form-container{\n  background-color: white ;\n}\n\n.card-panel{\n  margin-top:50px;\n}\n", ""]);
+exports.push([module.i, ".ng-touched {\n  border-color: blue;\n}\n\n.ng-touched.ng-invalid {\n  border-color: red;\n}\n\n.ng-touched.ng-valid {\n  border-color: green;\n}\n\n.form-container {\n  background-color: white;\n}\n\n.card-panel {\n  margin-top: 50px;\n}\n", ""]);
 
 // exports
 
@@ -887,7 +876,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/signupform/signupform.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <div class=\"card-panel white\">\n    <div class='form-container'>\n      <form class=\"col s12\">\n        <div class=\"form-group\">\n    <!-- <h2> Signup </h2>\n      <div class=\"input-field col s6\">\n    <label for=\"username\" data-error=\"wrong\" data-success=\"right\"> Username </label>\n    <input type=\"text\" [(ngModel)]=\"formInfo.username\" name=\"username\" class=\"validate\" required/>\n  </div>\n  <div class=\"input-field col s6\">\n    <label for=\"password\" data-error=\"wrong\" data-success=\"right\">Password</label>\n    <input type=\"password\" [(ngModel)]=\"formInfo.password\" name=\"password\" class=\"validate\" required/>\n  </div>\n    <button (click)=\"signup()\" class=\"waves-effect waves-light btn blue-grey btn-margin\" type='submit'>\n      SIGNUP\n      <i class=\"material-icons right\">send</i>\n    </button>\n  </form>\n</div> -->\n<h2 class='red-text text-lighten-1'> Regístrate!</h2>\n<div class=\"row\">\n  <div class=\"input-field col s6\">\n    <label for=\"username\" data-error=\"wrong\" data-success=\"right\"> Username </label>\n    <input type=\"text\" [(ngModel)]=\"formInfo.username\" name=\"username\" class=\"validate\" required/>\n  </div>\n  <div class=\"input-field col s6\">\n    <label for=\"password\" data-error=\"wrong\" data-success=\"right\">Password</label>\n    <input type=\"password\" [(ngModel)]=\"formInfo.password\" name=\"password\" class=\"validate\" required/>\n  </div>\n</div>\n  <button (click)=\"signup()\" class=\"waves-effect waves-light btn blue-grey btn-margin\" type='submit'>\n    SIGNUP\n    <i class=\"material-icons right\">send</i>\n  </button>\n</div>\n</form>\n</div>\n<p> {{ feedback }} </p>\n</div>\n\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"card-panel white\">\n    <div class='form-container'>\n      <form class=\"col s12\">\n        <div class=\"form-group\">\n\n          <h2 class='red-text text-lighten-1'> Regístrate!</h2>\n          <div class=\"row\">\n            <div class=\"input-field col s6\">\n              <label for=\"username\" data-error=\"wrong\" data-success=\"right\"> Username </label>\n              <input type=\"text\" [(ngModel)]=\"formInfo.username\" name=\"username\" class=\"validate\" required/>\n            </div>\n            <div class=\"input-field col s6\">\n              <label for=\"password\" data-error=\"wrong\" data-success=\"right\">Password</label>\n              <input type=\"password\" [(ngModel)]=\"formInfo.password\" name=\"password\" class=\"validate\" required/>\n            </div>\n          </div>\n          <button (click)=\"signup()\" class=\"waves-effect waves-light btn blue-grey btn-margin\" type='submit'>\n            SIGNUP\n            <i class=\"material-icons right\">send</i>\n          </button>\n        </div>\n      </form>\n    </div>\n    <p> {{ feedback }} </p>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
