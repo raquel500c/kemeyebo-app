@@ -27,6 +27,7 @@ export class AddArticleComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
   //  url: 'http://localhost:3000/api/articles/'
   url: `${BASE_URL}/api/articles`
+
   });
 
   newArticle = {

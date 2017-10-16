@@ -1,8 +1,7 @@
 const path = require('path');
 const debug = require('debug')("kemeyebo:"+path.basename(__filename).split('.')[0]);
 const mongoose = require('mongoose');
-const dbURL = process.env.DB_URL;
-// local--> const dbURL = process.env.DB_URL || 'mongodb://localhost/kemeyebo-app2';
+const dbURL = process.env.DB_URL || 'mongodb://localhost/kemeyebo';
 
 mongoose.Promise = global.Promise
 mongoose.connect(dbURL)
