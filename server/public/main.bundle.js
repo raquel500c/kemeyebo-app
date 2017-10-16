@@ -75,7 +75,6 @@ var AddArticleComponent = (function () {
         this.style = ['informal', 'casual', 'trabajo', 'deporte', 'fiesta', 'formal', 'formal-playa', 'etiqueta', 'varios'];
         this.category = ['parte de arriba', 'parte de abajo', 'cuerpo entero', 'calzado', 'accesorio', 'ropa interior', 'otra'];
         this.uploader = new __WEBPACK_IMPORTED_MODULE_1_ng2_file_upload__["FileUploader"]({
-            //  url: 'http://localhost:3000/api/articles/'
             url: BASE_URL + "/api/articles/"
         });
         this.newArticle = {
@@ -92,14 +91,13 @@ var AddArticleComponent = (function () {
             .subscribe(function (user) { return _this.user = user; });
     }
     AddArticleComponent.prototype.ngOnInit = function () {
-        //$('select').material_select();
-        // this.uploader.onSuccessItem = (item, response) => {
-        //   this.feedback = JSON.parse(response).message;
-        // }
-        //
-        // this.uploader.onErrorItem = (item, response, status, headers) => {
-        //   this.feedback = JSON.parse(response).message;
-        // };
+        var _this = this;
+        this.uploader.onSuccessItem = function (item, response) {
+            _this.feedback = JSON.parse(response).message;
+        };
+        this.uploader.onErrorItem = function (item, response, status, headers) {
+            _this.feedback = JSON.parse(response).message;
+        };
     };
     AddArticleComponent.prototype.submit = function () {
         var _this = this;
