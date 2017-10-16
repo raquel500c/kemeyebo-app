@@ -25,9 +25,7 @@ export class AddArticleComponent implements OnInit {
 
 
   uploader: FileUploader = new FileUploader({
-  //  url: 'http://localhost:3000/api/articles/'
-  url: `${BASE_URL}/api/articles/` 
-
+  url: `${BASE_URL}/api/articles/`
   });
 
   newArticle = {
@@ -50,15 +48,13 @@ export class AddArticleComponent implements OnInit {
 
   ngOnInit() {
 
-    //$('select').material_select();
+    this.uploader.onSuccessItem = (item, response) => {
+      this.feedback = JSON.parse(response).message;
+    }
 
-    // this.uploader.onSuccessItem = (item, response) => {
-    //   this.feedback = JSON.parse(response).message;
-    // }
-    //
-    // this.uploader.onErrorItem = (item, response, status, headers) => {
-    //   this.feedback = JSON.parse(response).message;
-    // };
+    this.uploader.onErrorItem = (item, response, status, headers) => {
+      this.feedback = JSON.parse(response).message;
+    };
   }
 
   submit() {
