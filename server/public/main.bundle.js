@@ -76,7 +76,7 @@ var AddArticleComponent = (function () {
         this.category = ['parte de arriba', 'parte de abajo', 'cuerpo entero', 'calzado', 'accesorio', 'ropa interior', 'otra'];
         this.uploader = new __WEBPACK_IMPORTED_MODULE_1_ng2_file_upload__["FileUploader"]({
             //  url: 'http://localhost:3000/api/articles/'
-            url: BASE_URL + "/api/articles"
+            url: BASE_URL + "/api/articles/"
         });
         this.newArticle = {
             owner: '',
