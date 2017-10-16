@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-declare const $:any;
+declare const $: any;
 
 @Component({
   selector: 'app-home',

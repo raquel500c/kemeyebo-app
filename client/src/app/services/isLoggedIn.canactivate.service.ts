@@ -14,10 +14,7 @@ export class IsLoggedInService implements CanActivate {
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     console.log("Checking can activate");
-
-    //return timeout(5).then(() => true);
-    //return this.auth.isLoggedIn().map(user => true)
     return this.auth.getUser() ? true : false
-    //return false;
   }
+  
 }

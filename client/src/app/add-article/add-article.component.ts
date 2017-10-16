@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable'
 import { AuthService } from '../services/auth.service';
 import { environment } from '../../environments/environment';
-const BASE_URL: string = environment.BASEURL ;
+const BASE_URL: string = environment.BASEURL;
 
 declare const $: any;
 
@@ -23,7 +23,6 @@ export class AddArticleComponent implements OnInit {
   style = ['informal', 'casual', 'trabajo', 'deporte', 'fiesta', 'formal', 'formal-playa', 'etiqueta', 'varios'];
   category = ['parte de arriba', 'parte de abajo', 'cuerpo entero', 'calzado', 'accesorio', 'ropa interior', 'otra'];
 
-
   uploader: FileUploader = new FileUploader({
   url: `${BASE_URL}/api/articles/`
   });
@@ -38,24 +37,13 @@ export class AddArticleComponent implements OnInit {
     notes: ''
   }
 
-  feedback: string;
-
   constructor(public auth: AuthService, public router: Router) {
     this.user = this.auth.getUser();
     this.auth.getLoginEventEmitter()
       .subscribe(user => this.user = user);
   }
 
-  ngOnInit() {
-
-    this.uploader.onSuccessItem = (item, response) => {
-      this.feedback = JSON.parse(response).message;
-    }
-
-    this.uploader.onErrorItem = (item, response, status, headers) => {
-      this.feedback = JSON.parse(response).message;
-    };
-  }
+  ngOnInit() {  }
 
   submit() {
     console.log(this.newArticle)
