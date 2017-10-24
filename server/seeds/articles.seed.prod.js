@@ -22,7 +22,7 @@ const user = new User({
 
 const articles =[
   {
-  owner: user._id,
+    owner: user._id,
     image: "https://static.e-stradivarius.net/5/photos2/2017/I/0/1/p/5150/245/660/5150245660_2_4_1.jpg?t=1506011275054",
     name:"jersey peluche granate",
     season: "otoño",
