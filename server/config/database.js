@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const dbURL = process.env.DB_URL || 'mongodb://localhost/kemeyebo';
 
 mongoose.Promise = global.Promise
-mongoose.connect(dbURL)
+mongoose.connect(dbURL, { useMongoClient: true })
   .then(() => debug(`connected to database ${dbURL}`))
   .catch(e => {
     debug(`ERROR CONNECTING TO DB ${dbURL}`);
