@@ -2,14 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-
 import { environment } from '../../environments/environment';
 const BASE_URL: string = environment.BASEURL ;
 
 @Injectable()
 export class ArticlesService {
   id;
-
   options : { withCredentials:true };
 
   constructor(private http: Http) { }
@@ -32,7 +30,7 @@ export class ArticlesService {
 
   newArticle () {
     return this.http.post(`${BASE_URL}/api/articles`, this.options )
-     .map (res => res.json());
+      .map (res => res.json());
 
   }
   get(id) {
@@ -41,13 +39,13 @@ export class ArticlesService {
   }
 
   edit(article) {
-       return this.http.put(`${BASE_URL}/api/articles/${article.id}`, article)
-         .map((res) => res.json());
+    return this.http.put(`${BASE_URL}/api/articles/${article.id}`, article)
+      .map((res) => res.json());
   }
 
   remove(id) {
    return this.http.delete(`${BASE_URL}/api/articles/${id}`)
-     .map((res) => res.json());
+      .map((res) => res.json());
   }
 
- }
+}

@@ -19,6 +19,7 @@ import { AddArticleComponent } from './add-article/add-article.component';
 import { FileSelectDirective } from "ng2-file-upload";
 import { MaterializeModule } from 'angular2-materialize';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { MaterializeModule } from 'angular2-materialize';
     ArticlesListComponent,
     ArticleDetailComponent,
     AddArticleComponent,
-    FileSelectDirective
+    FileSelectDirective,
+
   ],
   imports: [
     BrowserModule,
