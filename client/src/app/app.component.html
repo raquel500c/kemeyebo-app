@@ -8,7 +8,8 @@
       <li><a [routerLink]="['/signup']"><i class="material-icons left">input</i>Sign-Up</a></li>
     </ul>
     <ul *ngIf="user" class="right hide-on-med-and-down">
-      <li><a [routerLink]="['/articles']">Prendas</a></li>
+      <li><a [routerLink]="['/articles']">Armario</a></li>
+      <li><a [routerLink]="['/outfits']">Conjuntos</a></li>
       <li><a [routerLink]="['/']"><i class="material-icons left">person</i>{{ user.username }} </a></li>
       <li><a (click)="auth.logout().subscribe()"><i class="material-icons left">exit_to_app</i>Logout</a></li>
     </ul>

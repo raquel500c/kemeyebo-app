@@ -18,6 +18,7 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 import { AddArticleComponent } from './add-article/add-article.component';
 import { FileSelectDirective } from "ng2-file-upload";
 import { MaterializeModule } from 'angular2-materialize';
+import { ListOutfitComponent } from './list-outfit/list-outfit.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { MaterializeModule } from 'angular2-materialize';
     ArticleDetailComponent,
     AddArticleComponent,
     FileSelectDirective,
+    ListOutfitComponent,
 
   ],
   imports: [
